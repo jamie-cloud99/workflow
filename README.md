@@ -2,7 +2,17 @@
 
 可攜式 macOS 開發工作環境：集中管理工作流程、agents、前後端 skills 及工具設定。
 
-目前已交付 **Ghostty + Glow 的 Markdown 預覽器**。完整開發環境仍在整理，架構與盤點見[設計文件](docs/superpowers/specs/2026-09-14-dev-workflow-design.md)。Warp 已列為退役工具，不是安裝依賴。
+目前已交付 **Ghostty + Glow 的 Markdown 預覽器**。完整開發環境仍在整理，架構與盤點見[設計文件](docs/design.md)。Warp 已列為退役工具，不是安裝依賴。
+
+## 目錄怎麼看
+
+- `agents/`：AI 的共通規則與前後端規則模板。
+- `skills/`：共用、前端、後端技能及來源版本。
+- `config/`：工具設定與安裝清單。
+- `scripts/`：安裝、檢查、還原操作。
+- `docs/`：工作方式、換機說明與[設計](docs/design.md)。
+
+這是預定的五類內容；`agents/`、`skills/` 尚未建立。現有 `tests/` 與 `.github/` 用於本 repo 自身的驗證。
 
 ## Markdown 預覽
 
@@ -14,13 +24,25 @@
 
 需要 macOS、Homebrew、Python 3 與 AppleScript 編譯工具。請在一般 Terminal/Ghostty 執行，不在限制 AppleScript/LaunchServices 的 agent sandbox 內執行。
 
+目前使用 `github-jamiecloud` SSH alias，確保選到 `jamie-cloud99` 的金鑰。新機先在 GitHub 帳號加入自己的公鑰，再於 `~/.ssh/config` 設定（`IdentityFile` 改成新機實際金鑰路徑）：
+
+```sshconfig
+Host github-jamiecloud
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_jamiecloud
+  IdentitiesOnly yes
+```
+
+如果新機的 `github.com` 本來就使用正確帳號，也可以直接用 `git@github.com:jamie-cloud99/workflow.git`，不需要 alias。SSH 私鑰不收進 repo。
+
 ```sh
-git clone https://github.com/jamie-cloud99/workflow.git
+git clone git@github-jamiecloud:jamie-cloud99/workflow.git
 cd workflow
 brew install --cask ghostty
 brew install glow duti python
 python3 scripts/macos/install-markdown-preview.py --set-default
-open docs/superpowers/specs/2026-09-14-dev-workflow-design.md
+open docs/design.md
 ```
 
 若 Ghostty 已安裝可跳過 cask 安裝。腳本支援 Homebrew 的 Intel 與 Apple Silicon 路徑；目前真機驗證為 Intel macOS，未宣稱完成 Apple Silicon 真機驗證。Homebrew 指令安裝當時可取得的版本，並非工具版本鎖定；這次驗證使用 Ghostty 1.3.1、Glow 3.0.0、duti 1.5.4。
