@@ -1,6 +1,6 @@
 # Skills
 
-`common/`、`frontend/`、`backend/` 存放 7 個自有流程 skills。`sources.json` 管理 18 個第三方 skills 的來源、路徑與分類。
+`common/`、`frontend/`、`backend/` 存放 9 個自有流程 skills。`sources.json` 管理 18 個第三方 skills 的來源、路徑與分類。
 
 ## 第三方來源
 
@@ -19,6 +19,8 @@
 
 | 需求 | 入口 |
 | --- | --- |
+| 建立 commit、整理提交範圍 | [workflow-commit](common/workflow-commit/SKILL.md) |
+| 建立／更新 GitHub PR、確認遠端 CI | [workflow-create-pr](common/workflow-create-pr/SKILL.md) |
 | 調查原始碼、官方文件與 API | research |
 | 需求訪談 | grill-me；由 grilling 執行 |
 | 彙整已討論內容為 spec | to-spec |

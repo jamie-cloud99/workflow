@@ -5,6 +5,9 @@
 | 釐清需求 | 未定案時選 grill-me／to-spec；明確時直接 workflow-delivery | 可觀察驗收結果與未定政策 |
 | 實作 | workflow-delivery + 前後端專業 skill | 改動、測試、實際流程 |
 | 除錯 | workflow-debug | 重現、原因、修正前後結果 |
+| 提交變更 | workflow-commit | 提交範圍、SHA、相關驗證及保留的其他工作 |
+| 建立／更新 PR | workflow-create-pr | PR URL、base/head、遠端 SHA 與 CI 終態 |
+| Ship PR | workflow-delivery 串接 commit 與 create-pr | 實作驗證、提交、push、PR 與 CI |
 | PR review | workflow-review | 精確 head/base、觸發情境、影響與位置 |
 | 前端驗收 | workflow-browser-qa | 環境、步驟、畫面／網路證據 |
 | 相依 PR | gh-stack | 每層增量、base、CI 與整體行為 |
