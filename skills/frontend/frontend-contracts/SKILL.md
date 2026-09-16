@@ -1,9 +1,9 @@
 ---
-name: workflow-frontend-contracts
+name: frontend-contracts
 description: Use when changing frontend API schemas, permission presentation, forms, or URL state.
 ---
 
-# workflow-frontend-contracts
+# frontend-contracts
 
 1. List fields actually used by the UI and the meanings of empty values, errors, permissions, and states. Compare them with the real backend contract.
 2. Strictly validate fields affecting presentation, authorization, and calculations. Ignore unused fields and avoid coupling schemas across endpoints.

@@ -1,6 +1,8 @@
 # Skills
 
-`common/`、`frontend/`、`backend/` 存放 14 個自有流程 skills。`sources.json` 管理 18 個第三方 skills 的來源、路徑與分類。
+`common/`、`frontend/`、`backend/` 存放 14 個自有 skills。`sources.json` 管理 18 個第三方 skills 的來源、路徑與分類。
+
+流程型 skills 使用 `workflow-` 前綴，例如交付、review、prototype、瀏覽器驗收與資料庫變更；架構方法及契約規範直接使用主題名稱，例如 `ddd`、`bdd`、`frontend-contracts`、`backend-contracts`。第三方 skills 沿用上游名稱。
 
 ## 第三方來源
 

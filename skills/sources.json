@@ -143,6 +143,8 @@
     "workflow-ddd",
     "workflow-cqrs",
     "workflow-hexagonal",
-    "workflow-bdd"
+    "workflow-bdd",
+    "workflow-frontend-contracts",
+    "workflow-backend-contracts"
   ]
 }

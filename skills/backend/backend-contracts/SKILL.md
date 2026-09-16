@@ -1,9 +1,9 @@
 ---
-name: workflow-backend-contracts
+name: backend-contracts
 description: Use when changing APIs, authorization, state transitions, or transactional writes.
 ---
 
-# workflow-backend-contracts
+# backend-contracts
 
 1. Read entry points, authorization, services, and consumers; list success and rejection contracts.
 2. Verify authorization separately from visibility. Presentation-only state must not determine write permissions.
