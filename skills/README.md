@@ -7,9 +7,9 @@
 ## 更新方式
 
 ```sh
-python3.11 scripts/workflow.py sync-skills
-python3.11 scripts/workflow.py plan
-python3.11 scripts/workflow.py apply
+./workflow sync-skills
+./workflow plan
+./workflow apply
 ```
 
 每次 sync 都向上游查詢最新 HEAD；manifest 不鎖 commit 或 checksum，也不在每次開啟 agent 時下載。下載成功後的 commit 與摘要只記在本機，方便知道用了哪一版及偵測本機 cache 修改。

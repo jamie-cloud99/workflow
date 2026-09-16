@@ -1,8 +1,9 @@
 # 驗證紀錄
 
-2026-09-16，Intel macOS，本機 Python 3.11。
+2026-09-16，Intel macOS，本機 Python 3.11 與 3.14。
 
-- 28 項測試通過：conflict 零覆寫、重複套用、原檔與 mode 還原、後續修改保留、備份歷程、併行鎖、寫入失敗復原、symlink 路徑保護、Markdown 預覽及 CLI 操作。
+- 32 項測試在 Python 3.11、3.14 均通過：入口自動選 interpreter、conflict 零覆寫、重複套用、原檔與 mode 還原、後續修改保留、備份歷程、併行鎖、寫入失敗復原、symlink 路徑保護、Markdown 預覽及 CLI 操作。
+- `./workflow` 驗證舊預設 Python 的跳過、較新小版本的自動發現、含空白 interpreter 路徑、不同工作目錄呼叫及不相容版本的安裝提示；不執行安裝或改寫 PATH。
 - latest 更新測試使用真正的本機 Git repo：先同步第一個 commit，上游新增第二個 commit 後再次同步，確認切換版本且 manifest 不需改動。
 - 模擬網路失敗，確認上一份完整 resolved 清單保留；本機 source cache 被修改時不會默默覆寫或採用。
 - 獨立 review 發現的同一 HEAD 新增 skill 選項問題已重現並修正；不同選用路徑使用獨立 checkout，不破壞上一份可用內容。

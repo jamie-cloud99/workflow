@@ -11,7 +11,7 @@ import subprocess
 import sys
 
 if sys.version_info < (3, 11):
-    sys.exit('Python 3.11+ required. Use python3.11 (brew install python@3.11).')
+    sys.exit('Python 3.11+ required. Run ./workflow, or install Python with: brew install python.')
 import tomllib
 
 from managed_files import ManagedFiles
