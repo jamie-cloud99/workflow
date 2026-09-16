@@ -7,6 +7,7 @@ description: Design or review domain models, bounded contexts, and aggregate inv
 
 Use for a domain-modeling problem, not as a default architecture for ordinary CRUD.
 
+- Consult relevant existing modules and architecture checks before proposing structure. Reconcile documentation with code and tests; do not copy legacy exceptions into new work.
 - Start from the project's business language, concrete use cases, and disputed rules. Preserve established definitions; surface unknown policy rather than inventing it.
 - Bound contexts by model meaning and ownership, not tables or deployment units. A bounded context does not automatically require a microservice.
 - Choose entities, value objects, and aggregates around identity and consistency needs. State which invariants must hold atomically and how cross-boundary changes are coordinated.

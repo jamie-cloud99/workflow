@@ -9,6 +9,7 @@ Use when a real dependency boundary needs isolation or the project already uses 
 
 - Identify the use case and its external interactions. Let application needs define ports; keep transport and storage details in adapters.
 - Keep the core independent of concrete adapters. Place wiring at the application's composition boundary and follow the project's existing layout.
+- Keep port contracts free of concrete ORM entities and transport types. Cross-context access should use the owning context's public contract; shared core code must not depend on feature implementations.
 - Introduce abstractions where they express an actual boundary, not an interface for every class. DDD, CQRS, and microservices are separate choices.
 - Preserve transaction, error, and authorization semantics across adapters. In-memory adapters can test core decisions; real adapter tests establish database and integration behavior.
 - Finish with the affected ports, adapter responsibilities, dependency direction, and evidence that the boundary preserves behavior. Refactor incrementally within scope.
