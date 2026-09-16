@@ -1,6 +1,6 @@
 # Skills
 
-`common/`、`frontend/`、`backend/` 存放 14 個自有 skills。`sources.json` 管理 18 個第三方 skills 的來源、路徑與分類。
+`common/`、`frontend/`、`backend/` 存放 14 個自有 skills。`sources.json` 管理 23 個第三方 skills 的來源、路徑與分類。
 
 流程型 skills 使用 `workflow-` 前綴，例如交付、review、prototype、瀏覽器驗收與資料庫變更；架構方法及契約規範直接使用主題名稱，例如 `ddd`、`bdd`、`frontend-contracts`、`backend-contracts`。第三方 skills 沿用上游名稱。
 
@@ -17,6 +17,8 @@
 | [mattpocock/skills](https://github.com/mattpocock/skills) | research、grill-me、grilling、to-spec、tdd、codebase-design、writing-for-agents、setup-matt-pocock-skills |
 | [steveonead/agent-skills](https://github.com/steveonead/agent-skills) | react-best-practices、zod-best-practices、nestjs-best-practices、supertest-best-practices |
 
+| [1weiho/open-slide](https://github.com/1weiho/open-slide) | create-slide、slide-authoring、current-slide、apply-comments、create-theme |
+
 ## 主要入口
 
 | 需求 | 入口 |
@@ -32,6 +34,7 @@
 | Test-first 開發 | tdd；codebase-design 提供介面設計語彙 |
 | 撰寫 skill 與 agent 文件 | writing-for-agents |
 | 專案 tracker 與文件位置設定 | setup-matt-pocock-skills |
+| 製作 open-slide 簡報與主題、處理頁面註解 | create-slide、slide-authoring、current-slide、apply-comments、create-theme |
 | 精簡回覆 | caveman |
 
 Matt Pocock 的工程 skills 第一次用於某專案前，執行 `setup-matt-pocock-skills` 設定 tracker 與文件位置。對外發佈仍依使用者授權。
@@ -39,6 +42,8 @@ Matt Pocock 的工程 skills 第一次用於某專案前，執行 `setup-matt-po
 commit／PR 未指定格式時，分別使用 [commit 模板](common/workflow-commit/templates/default-commit.txt)與 [PR 模板](common/workflow-create-pr/templates/default-pr.md)。PR 以 ELI20 交代情境、改動後行為與驗證，已有 repo template 時沿用欄位。
 
 `/caveman` 啟用精簡回覆，保留技術資訊、命令、錯誤與使用者指定語言；`/caveman off` 關閉。本清單使用主 skill。
+
+open-slide skills 使用上游 `packages/core/skills/`，需在 open-slide 簡報專案內使用；同步 skills 不會安裝簡報 runtime。新簡報專案可依[上游說明](https://github.com/1weiho/open-slide)使用 `npx @open-slide/cli init my-slide` 建立，專案內 skills 已存在時沿用專案版本，避免重複維護。
 
 ## 按需選用
 

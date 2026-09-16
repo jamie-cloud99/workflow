@@ -130,6 +130,36 @@
           "group": "common"
         }
       ]
+    },
+    {
+      "repository": "1weiho/open-slide",
+      "skills": [
+        {
+          "name": "create-slide",
+          "path": "packages/core/skills/create-slide",
+          "group": "common"
+        },
+        {
+          "name": "slide-authoring",
+          "path": "packages/core/skills/slide-authoring",
+          "group": "common"
+        },
+        {
+          "name": "current-slide",
+          "path": "packages/core/skills/current-slide",
+          "group": "common"
+        },
+        {
+          "name": "apply-comments",
+          "path": "packages/core/skills/apply-comments",
+          "group": "common"
+        },
+        {
+          "name": "create-theme",
+          "path": "packages/core/skills/create-theme",
+          "group": "common"
+        }
+      ]
     }
   ],
   "update_policy": "latest",
