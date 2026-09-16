@@ -16,13 +16,9 @@
 | [juliusbrussee/caveman](https://github.com/juliusbrussee/caveman) | caveman |
 | [mattpocock/skills](https://github.com/mattpocock/skills) | research、grill-me、grilling、to-spec、tdd、codebase-design、writing-for-agents、setup-matt-pocock-skills |
 | [steveonead/agent-skills](https://github.com/steveonead/agent-skills) | react-best-practices、zod-best-practices、nestjs-best-practices、supertest-best-practices |
-
 | [1weiho/open-slide](https://github.com/1weiho/open-slide) | create-slide、slide-authoring、current-slide、apply-comments、create-theme |
-
 | [alibaba/open-code-review](https://github.com/alibaba/open-code-review) | open-code-review-delegate |
-
 | [tt-a1i/archify](https://github.com/tt-a1i/archify) | archify |
-
 | [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) | i-have-adhd |
 
 ## 主要入口
