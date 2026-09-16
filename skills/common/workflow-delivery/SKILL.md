@@ -5,6 +5,8 @@ description: Use when requirements are clear and changes need implementation or 
 
 # workflow-delivery
 
+For an explicitly requested prototype or unresolved behavior best explored interactively, use [workflow-prototype](../workflow-prototype/SKILL.md). Confirmed requirements do not need a prototype stage.
+
 1. Derive observable acceptance outcomes from what the user has already confirmed. Ask only for missing decisions that change behavior.
 2. Check repository rules, the working tree, and the target branch; preserve other work. Implement independently verifiable scope in dependency order.
 3. Investigate verification failures instead of removing checks or weakening conditions to expedite delivery. Add only tests that expose real regressions.

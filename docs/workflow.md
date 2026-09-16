@@ -3,6 +3,7 @@
 | 任務 | 主要入口 | 完成證據 |
 | --- | --- | --- |
 | 釐清需求 | 未定案時用 grill-me；to-spec 整理已討論內容；明確時直接 workflow-delivery | 可觀察驗收結果與未定政策 |
+| Prototype／POC | workflow-prototype | 可操作入口、觀察結果、確認需求與未定事項 |
 | 實作 | workflow-delivery + 前後端專業 skill | 改動、測試、實際流程 |
 | 除錯 | workflow-debug | 重現、原因、修正前後結果 |
 | 提交變更 | workflow-commit | 提交範圍、SHA、相關驗證及保留的其他工作 |
@@ -14,6 +15,8 @@
 | 前端驗收 | workflow-browser-qa | 環境、步驟、畫面／網路證據 |
 | 相依 PR | gh-stack | 每層增量、base、CI 與整體行為 |
 | 交接 | workflow-delivery 的交接模板，更新原任務文件 | 已完成、未完成、SHA、下一步及已授權動作 |
+
+需求不確定時，可由 grill-me 釐清問題，再以 [workflow-prototype](../skills/common/workflow-prototype/SKILL.md) 驗證互動、流程或狀態模型；方向確認後，視需要用 to-spec 整理，再進入 workflow-delivery。Prototype 是選用階段，既有需求明確時直接實作。原型需提供可操作入口並區分 mock 與正式行為，確認可重用想法及需重寫的部分；能展示不等於使用者已接受，也不代表可直接上線。
 
 同一階段選一個主流程，專業 skills 補充檢查範圍。沿用已確認設計與授權，不因同時安裝多個需求或 TDD skill 重複訪談。只有影響行為的未知政策才詢問使用者。
 
