@@ -1,6 +1,6 @@
 # Skills
 
-`common/`、`frontend/`、`backend/` 存放 14 個自有 skills。`sources.json` 管理 23 個第三方 skills 的來源、路徑與分類。
+`common/`、`frontend/`、`backend/` 存放 14 個自有 skills。`sources.json` 管理 24 個第三方 skills 的來源、路徑與分類。
 
 流程型 skills 使用 `workflow-` 前綴，例如交付、review、prototype、瀏覽器驗收與資料庫變更；架構方法及契約規範直接使用主題名稱，例如 `ddd`、`bdd`、`frontend-contracts`、`backend-contracts`。第三方 skills 沿用上游名稱。
 
@@ -18,6 +18,8 @@
 | [steveonead/agent-skills](https://github.com/steveonead/agent-skills) | react-best-practices、zod-best-practices、nestjs-best-practices、supertest-best-practices |
 
 | [1weiho/open-slide](https://github.com/1weiho/open-slide) | create-slide、slide-authoring、current-slide、apply-comments、create-theme |
+
+| [alibaba/open-code-review](https://github.com/alibaba/open-code-review) | open-code-review-delegate |
 
 ## 主要入口
 
@@ -44,6 +46,8 @@ commit／PR 未指定格式時，分別使用 [commit 模板](common/workflow-co
 `/caveman` 啟用精簡回覆，保留技術資訊、命令、錯誤與使用者指定語言；`/caveman off` 關閉。本清單使用主 skill。
 
 open-slide skills 使用上游 `packages/core/skills/`，需在 open-slide 簡報專案內使用；同步 skills 不會安裝簡報 runtime。新簡報專案可依[上游說明](https://github.com/1weiho/open-slide)使用 `npx @open-slide/cli init my-slide` 建立，專案內 skills 已存在時沿用專案版本，避免重複維護。
+
+open-code-review-delegate 是選用 review 輔助：由 `ocr` 提供檔案範圍與規則，目前 agent 負責審查。使用前需另行安裝 `ocr`（見 `config/tools.json` 的選用工具）；delegate 不需額外 LLM endpoint。需要覆蓋清單或按檔案匹配規則時才使用，仍由 workflow-review 決定角色與授權，且需核實 findings；檔案覆蓋率不等於缺陷召回率。
 
 ## 按需選用
 

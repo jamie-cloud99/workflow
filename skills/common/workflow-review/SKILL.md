@@ -18,3 +18,5 @@ Choose the mode from the user's request; do not infer it solely from the PR auth
 - Arrange independent review passes when requested; do not require separate agents for every review.
 - For authorized delivery, use [workflow-commit](../workflow-commit/SKILL.md) and [workflow-create-pr](../workflow-create-pr/SKILL.md). Verify the resulting remote head and CI; read back published replies and resolved thread state.
 - Report findings first, then coverage and remaining gaps. Keep fixes, CI, discussion resolution, approval, and merge status distinct; green CI alone does not justify resolving a finding.
+
+Use open-code-review-delegate when explicit file coverage or file-specific rule matching would help. It requires the optional `ocr` CLI; check availability before invoking it and keep the review moving with normal tools if unavailable. Preserve the actual base/head (including stack ancestry), account for excluded or skipped files, and validate findings against requirements. Delegation uses the current agent, not an independent reviewer; it does not authorize fixes or publication beyond the selected mode.

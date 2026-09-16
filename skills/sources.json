@@ -160,6 +160,16 @@
           "group": "common"
         }
       ]
+    },
+    {
+      "repository": "alibaba/open-code-review",
+      "skills": [
+        {
+          "name": "open-code-review-delegate",
+          "path": "skills/open-code-review-delegate",
+          "group": "common"
+        }
+      ]
     }
   ],
   "update_policy": "latest",
