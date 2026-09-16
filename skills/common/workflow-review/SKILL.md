@@ -20,3 +20,7 @@ Choose the mode from the user's request; do not infer it solely from the PR auth
 - Report findings first, then coverage and remaining gaps. Keep fixes, CI, discussion resolution, approval, and merge status distinct; green CI alone does not justify resolving a finding.
 
 Use open-code-review-delegate when explicit file coverage or file-specific rule matching would help. It requires the optional `ocr` CLI; check availability before invoking it and keep the review moving with normal tools if unavailable. Preserve the actual base/head (including stack ancestry), account for excluded or skipped files, and validate findings against requirements. Delegation uses the current agent, not an independent reviewer; it does not authorize fixes or publication beyond the selected mode.
+
+## Test quality when relevant
+
+Check whether changed tests can fail for the regression they claim to cover, whether mocks bypass the behavior under review, and whether important failure paths remain exercised. Inspect deleted/skipped tests and changed expected values against requirements; passing output alone is not the oracle. Text assertions and mocks can be valid when they express the actual contract. Report demonstrated gaps with a concrete missed scenario, not blanket demands for more tests; fixes follow the selected review mode.

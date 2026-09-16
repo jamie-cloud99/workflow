@@ -4,6 +4,7 @@
 | --- | --- | --- |
 | 釐清需求 | 未定案時用 grill-me；to-spec 整理已討論內容；明確時直接 workflow-delivery | 可觀察驗收結果與未定政策 |
 | Prototype／POC | workflow-prototype | 可操作入口、觀察結果、確認需求與未定事項 |
+| 拆分已確認需求 | workflow-task-breakdown | 可獨立驗收的任務、依賴與必要分支關係 |
 | 實作 | workflow-delivery + 前後端專業 skill | 改動、測試、實際流程 |
 | 除錯 | workflow-debug | 重現、原因、修正前後結果 |
 | 提交變更 | workflow-commit | 提交範圍、SHA、相關驗證及保留的其他工作 |
@@ -49,3 +50,5 @@ DDD、CQRS、Hexagonal Architecture 與 BDD 是[按需選用的 skills](../skill
 技術說明需要互動架構圖、資料流、時序或狀態圖時，可選用 `archify`；簡單圖使用 Mermaid，完整簡報使用 open-slide。先核對真實節點與關係，再驗證輸出；schema、版面與連線檢查不能替代原始碼證據或視覺驗收。
 
 回覆風格一次只啟用一種：caveman 偏重壓縮文字，i-have-adhd 偏重逐步行動與狀態提示。切換至 i-have-adhd 前先 `/caveman off`；切換至 caveman 前先 `stop adhd mode` 或 `normal mode`。兩者都維持使用者指定語言與既有授權。
+
+大型需求在 spec 確認後，可用 workflow-task-breakdown 拆成可獨立驗收的任務；小修改直接交付。GitNexus 由精簡的 gitnexus skill 提供操作與圖譜證據，仍需對照原始碼。Review 涉及測試時，同時檢查斷言、mock、刪除／跳過測試與預期值是否能證明需求，不以綠燈代替正確性。
