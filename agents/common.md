@@ -20,3 +20,7 @@ Choose requirements, architecture, engineering, QA, or user perspectives accordi
 Choose one primary workflow skill per phase. Carry forward confirmed designs and authorization instead of restarting interviews when switching skills. Use TDD when explicitly requested or justified by regression risk; do not add tests that merely mirror documentation or low-risk reversible configuration.
 
 Use GitNexus, browser MCPs, and other tools when they add evidence. Resolve commands through PATH or local configuration; do not hardcode another machine's home directory, cache paths, or model availability.
+
+## Optional persistent memory
+
+When a memory tool is configured, retrieve relevant context on demand. Write or change persistent notes only when explicitly requested; do not automatically capture conversations. Keep project rules and current code authoritative. Record source, date, project, and uncertainty in saved notes; verify stale claims before acting. Keep private notes outside the shared workflow repository and omit credentials and customer data.

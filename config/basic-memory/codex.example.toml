@@ -1,0 +1,9 @@
+[mcp_servers.basic-memory]
+command = "basic-memory"
+args = ["mcp", "--project", "private-memory"]
+
+[mcp_servers.basic-memory.env]
+BASIC_MEMORY_FORCE_LOCAL = "true"
+BASIC_MEMORY_SEMANTIC_SEARCH_ENABLED = "false"
+BASIC_MEMORY_AUTO_UPDATE = "false"
+BASIC_MEMORY_NO_PROMOS = "1"

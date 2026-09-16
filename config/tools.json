@@ -8,6 +8,7 @@
   },
   "extensions": [{"repository": "github/gh-stack", "revision": "v0.1.1"}],
   "manual": [
+    {"name": "basic-memory", "url": "https://github.com/basicmachines-co/basic-memory", "reason": "選用本機記憶 MCP；安裝與私人資料備份見 docs/memory.md，不隨 apply 自動啟用。"},
     {"name": "ocr", "url": "https://github.com/alibaba/open-code-review", "reason": "選用 review 輔助 CLI；以 npm install -g @alibaba-group/open-code-review 安裝。delegate 模式不需額外 LLM endpoint，skills 同步不會安裝 CLI。"},
     {"name": "herdr", "url": "https://herdr.dev", "reason": "終端工作區選用工具；安裝方式依 CPU/OS 確認，skills 不等同已安裝 CLI。"},
     {"name": "playwriter-browser-extension", "url": "https://github.com/remorses/playwriter", "reason": "需在 Chrome 安裝擴充套件並授權目標分頁。"},
