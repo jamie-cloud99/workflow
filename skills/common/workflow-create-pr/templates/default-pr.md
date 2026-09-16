@@ -1,21 +1,21 @@
-## 為什麼需要這個改動
+## Why this change is needed
 
-<誰在什麼情況遇到什麼問題，以及造成的影響。>
+<Who encounters which problem, under what circumstances, and with what impact.>
 
-## 改完會怎樣
+## Resulting behavior
 
-<用具體情境說明修改前後的行為。只加入理解改動所需的技術原因或取捨。>
+<Explain the behavior before and after the change through a concrete scenario. Include only technical reasons or tradeoffs needed to understand it.>
 
-## 怎麼確認
+## Verification
 
-- 本機：<實際執行的檢查與觀察到的結果。>
-- CI：<對應 head SHA 的實際狀態；尚未完成或沒有 checks 時如實標示。>
-- 未驗證：<仍需人工或特定環境驗證的項目；沒有此項時移除此行。>
+- Local: <Checks actually performed and observed results.>
+- CI: <Actual status for the corresponding head SHA; explicitly state if pending or if no checks exist.>
+- Unverified: <Items still requiring manual checks or a specific environment; remove this line if none.>
 
-## 影響與注意事項
+## Impact and operational notes
 
-<有 API、資料、相容性、設定或部署影響時說明具體範圍與必要操作；不適用時移除此節。>
+<Explain the concrete scope and required actions for API, data, compatibility, configuration, or deployment impact; remove this section if inapplicable.>
 
-## 關聯項目
+## References
 
-<實際 issue 或需求連結；不適用時移除此節。>
+<Actual issue or requirement links; remove this section if inapplicable.>

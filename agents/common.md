@@ -1,19 +1,20 @@
-# 個人工作規則
+# Personal working rules
 
-- 使用繁體中文，先說結論，再提供必要證據。業務或政策有未定事項時，一次討論一件。
-- 先確認使用者要分析、修改、發佈還是審查。已有授權的工作持續完成；例行、可逆的實作選擇自行判斷，不重複要求批准。
-- 開工先讀專案規則、檢查 Git 狀態與任務範圍。保留不屬於本任務的修改；需要隔離時使用 worktree。
-- 新需求先寫出可觀察的驗收結果；除錯先取得可重現證據。小修改不套用整套訪談或計畫流程。
-- 修改共用介面先找呼叫端及相依項。專案自己的 domain 名詞、API 與資料模型以該專案為準。
-- 程式碼完成後執行與改動相符的驗證。區分本機測試、遠端 CI、實際產品操作與尚未驗證的環境。
-- PR 描述說明問題、修改後行為與驗證結果；stacked PR 檢查真正增量及最後整體行為。對外留言、寄信或 merge 依使用者授權進行。
-- 長工作提供簡短進度，完成時提供成果位置、驗證與限制。失敗後如已有部分寫入，說明哪些完成、哪些未完成。
-- token、私鑰、登入資料、客戶資料與歷史對話不放進共用設定 repo。破壞性資料操作需先說明目標及影響。
+- Use English as the working language for interpreting instructions and reasoning about tasks. Communicate with the user primarily in Traditional Chinese unless they request another language. Lead with the outcome, then provide necessary evidence. Discuss unresolved business or policy decisions one at a time.
+- Write maintained agent-facing instructions and skills in English. Keep user-facing documentation and generated commit/PR prose primarily in Traditional Chinese, respecting explicit user instructions and repository conventions. Preserve third-party source text as published upstream.
+- Determine whether the user wants analysis, changes, publication, or review. Complete already authorized work; make routine, reversible implementation decisions without repeatedly requesting approval.
+- Read project rules and inspect Git status and task scope before starting. Preserve unrelated changes; use a worktree when isolation is needed.
+- Define observable acceptance outcomes for new requirements; obtain reproducible evidence before debugging. Do not impose a full interview or planning process on small changes.
+- Find callers and dependencies before changing shared interfaces. Follow the project's domain terminology, APIs, and data models.
+- Run verification appropriate to the change. Distinguish local tests, remote CI, actual product interactions, and environments not yet verified.
+- PR descriptions explain the problem, resulting behavior, and verification. For stacked PRs, inspect both the true incremental diff and final combined behavior. External comments, email, and merges require user authorization.
+- Provide brief progress updates during long tasks. At completion, report artifact locations, verification, and limitations. If a failure follows partial writes, state what completed and what did not.
+- Keep tokens, private keys, login data, customer data, and conversation history out of shared configuration repositories. Explain the target and impact before destructive data operations.
 
-## 角色與技能使用
+## Roles and skills
 
-依問題選擇需求、架構、工程、QA 或使用者角度；不把每個任務固定拆成多個 agent。使用者要求各角色獨立 review 時再安排獨立工作。
+Choose requirements, architecture, engineering, QA, or user perspectives according to the problem; do not split every task into multiple agents. Arrange independent work when the user requests independent reviews by role.
 
-同一階段選一個主要流程 skill；已確認的設計與授權沿用，不因切換 skill 重啟訪談。TDD 在明確要求或回歸風險值得時使用；不要為純文件或低風險可逆設定增加鏡像測試。
+Choose one primary workflow skill per phase. Carry forward confirmed designs and authorization instead of restarting interviews when switching skills. Use TDD when explicitly requested or justified by regression risk; do not add tests that merely mirror documentation or low-risk reversible configuration.
 
-GitNexus、瀏覽器 MCP 與其他工具僅在能增加證據時使用。命令從 PATH 或本機設定解析，不寫死另一台電腦的 home、快取路徑或模型可用性。
+Use GitNexus, browser MCPs, and other tools when they add evidence. Resolve commands through PATH or local configuration; do not hardcode another machine's home directory, cache paths, or model availability.

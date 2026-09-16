@@ -1,11 +1,11 @@
 ---
 name: workflow-browser-qa
-description: 前端功能完成後，要用瀏覽器驗證使用者流程與畫面時使用。
+description: Use after frontend implementation when browser verification of user flows and presentation is needed.
 ---
 
 # workflow-browser-qa
 
-1. 先確認啟動指令、URL、登入方式、測試資料與工具是否可用，不推測既有 session 的權限。
-2. 以可觀察動作驗證載入、輸入、送出、錯誤、重試與完成；需要時檢查 console 和 network 佐證。
-3. 檢查鍵盤焦點、label、窄螢幕與長文字；截圖只證明當時可見畫面，不能代表資料已正確寫入。
-4. 回報環境、動作、結果與未覆蓋範圍；不得把建立頁面或測試通過直接當作實際流程驗收。
+1. Confirm the startup command, URL, login method, test data, and tool availability. Do not assume an existing session has sufficient permissions.
+2. Use observable actions to verify loading, input, submission, errors, retry, and completion. Inspect console and network evidence when needed.
+3. Check keyboard focus, labels, narrow screens, and long text. A screenshot proves only the visible state at that moment, not that data was written correctly.
+4. Report environment, actions, results, and uncovered scope. Creating a page or passing tests does not by itself establish acceptance of the actual flow.

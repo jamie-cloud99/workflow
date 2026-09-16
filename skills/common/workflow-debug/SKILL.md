@@ -1,11 +1,11 @@
 ---
 name: workflow-debug
-description: 追查錯誤、測試失敗或不符合預期的行為時使用。
+description: Use when investigating errors, failed tests, or unexpected behavior.
 ---
 
 # workflow-debug
 
-1. 記錄輸入、實際結果、預期結果與最小重現；先驗證使用者描述的前提。
-2. 沿資料或呼叫鏈定位第一個偏離預期的位置。資料庫、API 與瀏覽器證據標示來源環境。
-3. 一次測試一個原因假設，先排除設定或版本差異，再修改程式。
-4. 修正後重跑原重現及相鄰的關鍵路徑。若主要寫入已成功但後處理失敗，分別報告結果。
+1. Record inputs, actual and expected results, and a minimal reproduction. Verify the premises of the user report first.
+2. Trace the data or call chain to the first deviation from expected behavior. Label database, API, and browser evidence with its source environment.
+3. Test one causal hypothesis at a time. Rule out configuration or version differences before changing code.
+4. After the fix, rerun the original reproduction and adjacent critical paths. Report successful primary writes separately from failed post-processing.

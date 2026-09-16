@@ -1,12 +1,12 @@
 ---
 name: workflow-delivery
-description: 需求已明確且要實作或交付變更時使用；純問答不啟動整套流程。
+description: Use when requirements are clear and changes need implementation or delivery; do not start the full workflow for simple questions.
 ---
 
 # workflow-delivery
 
-1. 從使用者已確認的內容寫出可觀察的驗收結果；缺少會改變行為的決策才詢問。
-2. 確認 repo 規則、工作樹與目標分支，保留其他工作。依依賴順序實作可獨立驗證的範圍。
-3. 驗證失敗先定位原因，不因趕交付移除驗證或放寬條件。只新增能揭露實際回歸的測試。
-4. 使用者要求 commit 時使用 [workflow-commit](../workflow-commit/SKILL.md)；要求建立／更新 PR 時接續 [workflow-create-pr](../workflow-create-pr/SKILL.md)。ship PR 串接實作驗證、commit、push、PR 與 CI 確認，沿用已取得的授權。
-5. 交付時分別列出程式變更、本機驗證、遠端 CI 與使用者操作證據。完成已授權步驟再回報；尚未完成的項目如實標示。
+1. Derive observable acceptance outcomes from what the user has already confirmed. Ask only for missing decisions that change behavior.
+2. Check repository rules, the working tree, and the target branch; preserve other work. Implement independently verifiable scope in dependency order.
+3. Investigate verification failures instead of removing checks or weakening conditions to expedite delivery. Add only tests that expose real regressions.
+4. Use [workflow-commit](../workflow-commit/SKILL.md) when a commit is requested, followed by [workflow-create-pr](../workflow-create-pr/SKILL.md) when creating or updating a PR is requested. A ship-PR request connects implementation verification, commit, push, PR, and CI confirmation under existing authorization.
+5. At delivery, distinguish code changes, local verification, remote CI, and actual user-interaction evidence. Complete authorized steps before reporting; clearly identify unfinished work.

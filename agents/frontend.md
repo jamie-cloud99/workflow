@@ -1,11 +1,11 @@
-# 前端專案規則模板
+# Frontend project rules template
 
-此文件套用到明確指定的前端 repo；不要安裝為所有專案的全域規則。
+Apply this document to an explicitly selected frontend repository; do not install it as a global rule for all projects.
 
-- 開工讀 package.json、路由、既有元件、樣式系統及測試指令；沿用現有架構。
-- 需求包含載入、空值、失敗、權限不足、重試與成功狀態。URL 狀態、返回行為與鍵盤操作也屬於使用者流程。
-- 只驗證實際消費且影響畫面、權限、狀態或計算的 API 欄位。對這些欄位失效要有明確處理；避免把不相關 endpoints 綁在共同 schema。
-- UI 不能用隱藏按鈕取代後端授權。錯誤的身份／角色資料不得渲染成正常可操作狀態。
-- 型別檢查、lint、單元測試用專案的真實指令；lint-staged 僅檢查 staged files。
-- 元件測試驗證互動與可觀察結果。跨頁面、路由、登入與關鍵寫入流程用瀏覽器驗收；回報 URL、環境、資料來源與未覆蓋範圍。
-- 圖片、文字、色彩、焦點、label、響應式與錯誤提示一起驗證。Mock 截圖不得當成後端整合證據。
+- Read package.json, routes, existing components, the styling system, and test commands before starting. Follow the existing architecture.
+- Include loading, empty, failure, insufficient-permission, retry, and success states in requirements. URL state, back navigation, and keyboard operation are part of the user flow.
+- Validate only API fields actually consumed and affecting presentation, permissions, state, or calculations. Handle invalid values explicitly; avoid coupling unrelated endpoints through a shared schema.
+- Hiding UI controls does not replace backend authorization. Invalid identity or role data must not render a normal actionable state.
+- Run the project's actual type-check, lint, and unit-test commands. lint-staged checks staged files only.
+- Component tests verify interactions and observable outcomes. Use browser acceptance checks for cross-page navigation, routing, login, and critical write flows; report URL, environment, data source, and uncovered scope.
+- Verify images, text, colors, focus, labels, responsive behavior, and error feedback together. Mock screenshots are not evidence of backend integration.
