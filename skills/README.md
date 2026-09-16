@@ -1,6 +1,6 @@
 # Skills
 
-`common/`、`frontend/`、`backend/` 存放 14 個自有 skills。`sources.json` 管理 25 個第三方 skills 的來源、路徑與分類。
+`common/`、`frontend/`、`backend/` 存放 14 個自有 skills。`sources.json` 管理 26 個第三方 skills 的來源、路徑與分類。
 
 流程型 skills 使用 `workflow-` 前綴，例如交付、review、prototype、瀏覽器驗收與資料庫變更；架構方法及契約規範直接使用主題名稱，例如 `ddd`、`bdd`、`frontend-contracts`、`backend-contracts`。第三方 skills 沿用上游名稱。
 
@@ -23,6 +23,8 @@
 
 | [tt-a1i/archify](https://github.com/tt-a1i/archify) | archify |
 
+| [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) | i-have-adhd |
+
 ## 主要入口
 
 | 需求 | 入口 |
@@ -40,19 +42,22 @@
 | 專案 tracker 與文件位置設定 | setup-matt-pocock-skills |
 | 製作 open-slide 簡報與主題、處理頁面註解 | create-slide、slide-authoring、current-slide、apply-comments、create-theme |
 | 互動架構、流程、時序、資料流與狀態圖 | archify |
+| 手動切換逐步行動、易掃讀的回覆模式 | i-have-adhd |
 | 精簡回覆 | caveman |
 
 Matt Pocock 的工程 skills 第一次用於某專案前，執行 `setup-matt-pocock-skills` 設定 tracker 與文件位置。對外發佈仍依使用者授權。
 
 commit／PR 未指定格式時，分別使用 [commit 模板](common/workflow-commit/templates/default-commit.txt)與 [PR 模板](common/workflow-create-pr/templates/default-pr.md)。PR 以 ELI20 交代情境、改動後行為與驗證，已有 repo template 時沿用欄位。
 
-`/caveman` 啟用精簡回覆，保留技術資訊、命令、錯誤與使用者指定語言；`/caveman off` 關閉。本清單使用主 skill。
+`/caveman` 啟用精簡回覆，保留技術資訊、命令、錯誤與使用者指定語言；`/caveman off` 關閉。本清單使用主 skill。**避免與 i-have-adhd 同時啟用**；切換至 i-have-adhd 前先執行 `/caveman off`。
 
 open-slide skills 使用上游 `packages/core/skills/`，需在 open-slide 簡報專案內使用；同步 skills 不會安裝簡報 runtime。新簡報專案可依[上游說明](https://github.com/1weiho/open-slide)使用 `npx @open-slide/cli init my-slide` 建立，專案內 skills 已存在時沿用專案版本，避免重複維護。
 
 open-code-review-delegate 是選用 review 輔助：由 `ocr` 提供檔案範圍與規則，目前 agent 負責審查。使用前需另行安裝 `ocr`（見 `config/tools.json` 的選用工具）；delegate 不需額外 LLM endpoint。需要覆蓋清單或按檔案匹配規則時才使用，仍由 workflow-review 決定角色與授權，且需核實 findings；檔案覆蓋率不等於缺陷召回率。
 
 archify 是選用的技術圖解工具，來源目錄 `archify/` 包含 renderer、schema 與驗證程式，需 Node.js 18 以上。複雜、互動或需匯出的圖解可使用它；簡單 Markdown 圖用 Mermaid，完整簡報用 open-slide。圖解驗證不代表架構符合真實程式，仍需核對來源證據。同步保留上游完整內容；更新由本 repo 的 sync-skills 管理，如不需要上游額外更新提示，可在執行時設定 `ARCHIFY_UPDATE_CHECK_DISABLED=1`。
+
+i-have-adhd 僅收錄 `skills/i-have-adhd/` 與其上游 metadata，不安裝 plugin 或 always-on hooks。手動呼叫 `/i-have-adhd` 啟用，以 `stop adhd mode` 或 `normal mode` 關閉；保留繁體中文偏好與既有工作授權，**避免與 caveman 同時啟用**；切換至 caveman 前先以 `stop adhd mode` 或 `normal mode` 關閉。兩者都會改寫回覆風格，同時啟用可能造成輸出規則互相干擾。
 
 ## 按需選用
 

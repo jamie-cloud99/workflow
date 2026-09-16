@@ -180,6 +180,16 @@
           "group": "common"
         }
       ]
+    },
+    {
+      "repository": "ayghri/i-have-adhd",
+      "skills": [
+        {
+          "name": "i-have-adhd",
+          "path": "skills/i-have-adhd",
+          "group": "common"
+        }
+      ]
     }
   ],
   "update_policy": "latest",

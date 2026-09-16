@@ -47,3 +47,5 @@ DDD、CQRS、Hexagonal Architecture 與 BDD 是[按需選用的 skills](../skill
 需要明確檔案覆蓋清單或依檔案匹配審查規則時，可搭配 `open-code-review-delegate` 與選用的 `ocr` CLI。它由目前 agent 執行判斷，並非獨立第二位 reviewer；沿用實際 base／head、列出排除或略過檔案，結果仍須核實。未安裝 CLI 時可直接沿用原 review 工具。
 
 技術說明需要互動架構圖、資料流、時序或狀態圖時，可選用 `archify`；簡單圖使用 Mermaid，完整簡報使用 open-slide。先核對真實節點與關係，再驗證輸出；schema、版面與連線檢查不能替代原始碼證據或視覺驗收。
+
+回覆風格一次只啟用一種：caveman 偏重壓縮文字，i-have-adhd 偏重逐步行動與狀態提示。切換至 i-have-adhd 前先 `/caveman off`；切換至 caveman 前先 `stop adhd mode` 或 `normal mode`。兩者都維持使用者指定語言與既有授權。

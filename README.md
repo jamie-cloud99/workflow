@@ -34,7 +34,7 @@ cd workflow
 ## 工作方式
 
 - [日常工作流](docs/workflow.md)：需求、除錯、review、交付。
-- [Skills 清單](skills/README.md)：14 個自有 skills、25 個跟隨上游的第三方 skills。
+- [Skills 清單](skills/README.md)：14 個自有 skills、26 個跟隨上游的第三方 skills。
 - [Markdown 預覽](docs/markdown-preview.md)：Ghostty + Glow。
 - [設計與邊界](docs/design.md)、[驗證方式](docs/verification.md)。
 
