@@ -1,0 +1,7 @@
+# 個人偏好；若帳號無此模型，請在 repo 中修改後重新 plan/apply。
+model = "gpt-6-astra"
+model_reasoning_effort = "low"
+service_tier = "fast"
+personality = "pragmatic"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"

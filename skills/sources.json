@@ -1,0 +1,111 @@
+{
+  "format": 1,
+  "sources": [
+    {
+      "repository": "github/gh-stack",
+      "skills": [
+        {
+          "name": "gh-stack",
+          "path": "skills/gh-stack",
+          "group": "common"
+        }
+      ]
+    },
+    {
+      "repository": "pbakaus/impeccable",
+      "skills": [
+        {
+          "name": "impeccable",
+          "path": ".agents/skills/impeccable",
+          "group": "frontend"
+        }
+      ]
+    },
+    {
+      "repository": "shadcn/ui",
+      "skills": [
+        {
+          "name": "shadcn",
+          "path": "skills/shadcn",
+          "group": "frontend"
+        }
+      ]
+    },
+    {
+      "repository": "remorses/playwriter",
+      "skills": [
+        {
+          "name": "playwriter",
+          "path": "skills/playwriter",
+          "group": "frontend"
+        }
+      ]
+    },
+    {
+      "repository": "herdrdev/herdr",
+      "skills": [
+        {
+          "name": "herdr",
+          "path": "skills/herdr",
+          "group": "common"
+        }
+      ]
+    },
+    {
+      "repository": "steveonead/agent-skills",
+      "skills": [
+        {
+          "name": "ito-explain",
+          "path": ".claude/skills/ito-explain",
+          "group": "common"
+        },
+        {
+          "name": "ito-search",
+          "path": ".claude/skills/ito-search",
+          "group": "common"
+        },
+        {
+          "name": "ito-prd",
+          "path": ".claude/skills/ito-prd",
+          "group": "common"
+        },
+        {
+          "name": "ito-grill",
+          "path": ".claude/skills/ito-grill",
+          "group": "common"
+        },
+        {
+          "name": "ito-tdd",
+          "path": ".claude/skills/ito-tdd",
+          "group": "common"
+        },
+        {
+          "name": "ito-skill",
+          "path": ".claude/skills/ito-skill",
+          "group": "common"
+        },
+        {
+          "name": "react-best-practices",
+          "path": ".claude/skills/react-best-practices",
+          "group": "frontend"
+        },
+        {
+          "name": "zod-best-practices",
+          "path": ".claude/skills/zod-best-practices",
+          "group": "frontend"
+        },
+        {
+          "name": "nestjs-best-practices",
+          "path": ".claude/skills/nestjs-best-practices",
+          "group": "backend"
+        },
+        {
+          "name": "supertest-best-practices",
+          "path": ".claude/skills/supertest-best-practices",
+          "group": "backend"
+        }
+      ]
+    }
+  ],
+  "update_policy": "latest"
+}

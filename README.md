@@ -1,116 +1,49 @@
 # Workflow
 
-可攜式 macOS 開發工作環境：集中管理工作流程、agents、前後端 skills 及工具設定。
+我的 macOS 開發工作環境：工作規則、前後端 skills、工具設定及換機操作。
 
-目前已交付 **Ghostty + Glow 的 Markdown 預覽器**。完整開發環境仍在整理，架構與盤點見[設計文件](docs/design.md)。Warp 已列為退役工具，不是安裝依賴。
+| 要找什麼 | 放哪裡 |
+| --- | --- |
+| AI 要遵守的規則 | [agents/](agents/) |
+| 共用、前端、後端技能 | [skills/](skills/) |
+| 工具設定與安裝清單 | [config/](config/) |
+| 預覽、套用、檢查、還原 | [scripts/workflow.py](scripts/workflow.py) |
+| 日常工作與換機說明 | [docs/](docs/) |
 
-## 目錄怎麼看
+## 換電腦
 
-- `agents/`：AI 的共通規則與前後端規則模板。
-- `skills/`：共用、前端、後端技能及來源版本。
-- `config/`：工具設定與安裝清單。
-- `scripts/`：安裝、檢查、還原操作。
-- `docs/`：工作方式、換機說明與[設計](docs/design.md)。
-
-這是預定的五類內容；`agents/`、`skills/` 尚未建立。現有 `tests/` 與 `.github/` 用於本 repo 自身的驗證。
-
-## Markdown 預覽
-
-雙擊 `.md` 或 `.markdown`，會在 Ghostty 開啟排版預覽。標題、清單、表格與程式碼會套用終端機樣式；用方向鍵、Page Up/Down 捲動，按 `q` 關閉。
-
-這是文字終端機預覽，圖片不會顯示，Mermaid 不會轉成圖形；它也不編輯原文件。來源檔更新後需重新開啟。
-
-### 換機安裝
-
-需要 macOS、Homebrew、Python 3 與 AppleScript 編譯工具。請在一般 Terminal/Ghostty 執行，不在限制 AppleScript/LaunchServices 的 agent sandbox 內執行。
-
-目前使用 `github-jamiecloud` SSH alias，確保選到 `jamie-cloud99` 的金鑰。新機先在 GitHub 帳號加入自己的公鑰，再於 `~/.ssh/config` 設定（`IdentityFile` 改成新機實際金鑰路徑）：
-
-```sshconfig
-Host github-jamiecloud
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_ed25519_jamiecloud
-  IdentitiesOnly yes
-```
-
-如果新機的 `github.com` 本來就使用正確帳號，也可以直接用 `git@github.com:jamie-cloud99/workflow.git`，不需要 alias。SSH 私鑰不收進 repo。
+先依[換機步驟](docs/setup.md)準備 Homebrew、Python 3.11、SSH 與登入，再執行：
 
 ```sh
 git clone git@github-jamiecloud:jamie-cloud99/workflow.git
 cd workflow
-brew install --cask ghostty
-brew install glow duti python
-python3 scripts/macos/install-markdown-preview.py --set-default
-open docs/design.md
+python3.11 scripts/workflow.py install-tools
+python3.11 scripts/workflow.py install-tools --execute
+python3.11 scripts/workflow.py sync-skills
+python3.11 scripts/workflow.py plan
+python3.11 scripts/workflow.py apply
+python3.11 scripts/workflow.py doctor
 ```
 
-若 Ghostty 已安裝可跳過 cask 安裝。腳本支援 Homebrew 的 Intel 與 Apple Silicon 路徑；目前真機驗證為 Intel macOS，未宣稱完成 Apple Silicon 真機驗證。Homebrew 指令安裝當時可取得的版本，並非工具版本鎖定；這次驗證使用 Ghostty 1.3.1、Glow 3.0.0、duti 1.5.4。
+`github-jamiecloud` 是選擇個人 GitHub 金鑰的 SSH alias，範例見 [config/git/ssh.example](config/git/ssh.example)。
 
-預覽 app 安裝至 `~/Applications/Markdown Preview.app`，包含閱讀腳本；安裝後可移動 repo，不影響預覽器。
+第三方 skills **每次 sync 都取得上游最新版本**，不在 repo 鎖版。後續更新執行 `sync-skills`、`plan`、`apply` 即可。已有不同設定會顯示 conflict，確認後才用 `apply --replace` 備份並替換。
 
-省略 `--set-default` 只安裝 app，不主動設定預設程式：
+## 工作方式
+
+- [日常工作流](docs/workflow.md)：需求、除錯、review、交付。
+- [Skills 清單](skills/README.md)：7 個自有 skills、15 個跟隨上游的第三方 skills。
+- [Markdown 預覽](docs/markdown-preview.md)：Ghostty + Glow，無 Warp 依賴。
+- [設計與邊界](docs/design.md)、[驗證紀錄](docs/verification.md)。
+
+已在隔離目錄驗證套用、重跑與還原，未在全新實體電腦執行整套套件安裝。設定、CLI 版本、登入與 MCP 連通分別檢查，不把設定可讀視為全部完成。
+
+## 維護
 
 ```sh
-python3 scripts/macos/install-markdown-preview.py
-open -a 'Markdown Preview' README.md
-```
-
-若原本沒有可查詢的 Markdown 預設程式，`--set-default` 會在更動關聯前停止。可先用 Finder 的「取得資訊 → 打開檔案的應用程式 → TextEdit → 全部更改」建立基準，再執行安裝。
-
-### 確認設定
-
-```sh
-duti -x md
-duti -x markdown
-```
-
-兩者都應顯示 `Markdown Preview`，bundle ID 為 `com.jamiecloud99.workflow.markdown-preview`。
-
-### 還原或改用 TextEdit
-
-原本的有效預設應用程式記錄在：
-
-```text
-~/Library/Application Support/dev-workflow/markdown-preview/defaults-before.json
-```
-
-重裝不覆寫這份記錄，既有 app 另存成 ZIP 備份。若原應用程式仍在，可執行：
-
-```sh
-python3 scripts/macos/install-markdown-preview.py --restore-defaults
-```
-
-還原的是副檔名的有效預設 app，不是完整的 macOS LaunchServices 狀態或分角色偏好。如果你已手動改成其他 app，還原器會保留現況並回報衝突。
-
-**Warp 已預計移除，這台電腦建議需要時直接改用 TextEdit，而非恢復到 Warp：**
-
-```sh
-duti -s com.apple.TextEdit .md all
-duti -s com.apple.TextEdit .markdown all
-```
-
-預覽 app 與工具不會因還原關聯而被卸載。備份及帳號狀態不進 Git。
-
-## 開發驗證
-
-```sh
-python3 -m unittest discover -s tests -v
+python3.11 -m unittest discover -s tests -v
 bash -n scripts/macos/preview-markdown.sh
+zsh -n config/shell/env.zsh
 ```
 
-可在暫存目錄驗證編譯，不變更預設關聯：
-
-```sh
-python3 scripts/macos/install-markdown-preview.py \
-  --app-dir /tmp/workflow-preview-check/Applications \
-  --state-dir /tmp/workflow-preview-check/state
-```
-
-macOS 會註冊 app；完成後先用系統 `lsregister -u` 取消該測試 app 的註冊，再刪除自己建立的暫存目錄，避免留下同 bundle ID 的測試副本。
-
-## 來源
-
-- [Glow](https://github.com/charmbracelet/glow)：終端機 Markdown 排版與分頁閱讀。
-- [Ghostty configuration](https://ghostty.org/docs/config/reference#initial-command)：透過 `-e` 啟動閱讀器。
-- duti 的使用方法以安裝版本的 `man duti` 為準。
+本 repo 不含私鑰、token、OAuth、歷史對話或專案資料。skills 連結依賴此 repo 與下載 cache 的位置；搬動 repo 前先 restore，再從新位置 apply。

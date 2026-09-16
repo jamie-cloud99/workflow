@@ -1,16 +1,16 @@
 # 可攜式開發工作環境
 
-狀態：依使用者回饋簡化後的設計草案。Markdown 預覽已完成，其餘完整環境安裝器尚未實作。
+狀態：五目錄設計已確認，換機工具與文件已實作。真機與隔離驗證範圍見 verification.md。
 
 ## 目標與已確認範圍
 
 以 `jamie-cloud99/workflow` repo 管理 macOS 開發環境，包含 Codex、Claude Code、共用 agent 規則、前後端 skills、MCP、Git、終端機及工具安裝。換機後能從 repo 重建工作方式，並清楚知道哪些項目還需登入或手動完成。
 
-使用者已確認涵蓋完整開發環境，以 macOS 為第一版。以下為建議設計，尚未代表使用者逐項同意。
+使用者已確認 macOS 完整開發環境與五目錄結構，並指定第三方 skills 使用線上最新版本。
 
 ## 目錄：只分五種責任
 
-這是預定結構；目前已存在的是 Markdown 預覽相關設定、腳本、測試與文件。其餘目錄有內容時再建立。
+以下是主要內容分類；安裝產物和本機 cache 不加入 repo。
 
 ```text
 workflow/
@@ -23,7 +23,7 @@ workflow/
     common/              # 需求、除錯、review、交付
     frontend/            # UI、元件、瀏覽器 QA
     backend/             # API、資料庫、後端測試
-    sources.json         # 第三方技能的來源、版本與分類
+    sources.json         # 第三方技能的來源、路徑與分類
   config/                # 工具使用的設定與安裝清單
     codex/
     claude/
@@ -47,7 +47,7 @@ workflow/
 | 要調整的內容 | 唯一維護位置 |
 | --- | --- |
 | Agent 的語言、授權判斷、前後端規則 | `agents/` |
-| 新增或更新 skill | `skills/`；第三方版本記在 `skills/sources.json` |
+| 新增或更新 skill | `skills/`；第三方來源記在 `skills/sources.json` |
 | Codex、Claude、Git、Ghostty 設定 | `config/` 中對應工具 |
 | 安裝哪些套件、CLI、plugins | `config/Brewfile`、`config/tools.json` |
 | 如何安裝、檢查與還原設定 | `scripts/` |
@@ -67,9 +67,11 @@ workflow/
 
 ## Skills 與第三方來源
 
-個人共用 skills 以單一來源管理，再依執行環境建立連結。`agents/` 存放要安裝的規則來源，不等同於本 repo 根目錄的 `AGENTS.md`；後者若有需要，只規範本 repo 的維護工作。Codex 以官方文件列出的使用者 `.agents/skills` 作為主要安裝位置，避免再安裝另一份同名 skill。Claude 的安裝位置與 metadata 於實作前對照其官方文件驗證。
+個人共用 skills 以單一來源管理，再依執行環境建立連結。`agents/` 存放要安裝的規則來源，不等同於本 repo 根目錄的 `AGENTS.md`；後者若有需要，只規範本 repo 的維護工作。Codex 以官方文件列出的使用者 `.agents/skills` 作為主要安裝位置，避免再安裝另一份同名 skill。Claude 使用官方支援的 `~/.claude/skills` 逐一連結。
 
-`skills/sources.json` 記錄第三方技能的 repository、已驗證 revision、skill 子路徑、內容 checksum、適用環境及依賴。目錄中的分類是維護用途；安裝到工具時以各 skill 為單位建立連結，不假設工具會遞迴掃描分類目錄。更新是明確操作，不在每次啟動時追蹤 latest。上游版本與本機修改分開記錄；找不到來源者先保留盤點狀態，不假裝已可重建。
+`skills/sources.json` 記錄 repository、skill 路徑與分類，不固定版本。每次 `sync-skills` 都取得上游預設分支最新 HEAD，全部成功後更新本機使用清單；`apply` 才切換連結。本機記錄實際 commit 與內容摘要，用於診斷及偵測 cache 修改，並非限制更新的 lockfile。下載失敗保留上一份完整清單。
+
+分類目錄是維護用途；安裝器逐一建立 skill 連結，不假設工具會遞迴掃描。
 
 失效連結需確認來源後才能納入安裝項目；已由 plugin 提供的 skill 不重複安裝。第三方內容若需收錄，保留來源與授權文件。
 
@@ -87,7 +89,7 @@ token、OAuth、SSH/GPG 私鑰、歷史 session、快取、專案信任紀錄及
 
 ## 換機操作草案
 
-以下描述預期功能，目前尚不可執行。
+具體命令與登入步驟見 setup.md。
 
 1. 使用 SSH clone repo，確認 macOS、CPU 架構及必要的初始安裝條件。這台電腦使用既有 `github-jamiecloud` host alias 選擇個人帳號金鑰；新機需先設定 SSH 身分。
 2. 執行 `plan`：列出將安裝的工具、建立的連結、產生的設定、衝突檔案及需登入的服務；不改動系統。
@@ -105,14 +107,14 @@ token、OAuth、SSH/GPG 私鑰、歷史 session、快取、專案信任紀錄及
 - 重複套用結果一致；遇到既有不同內容會保留並回報。
 - 還原能恢復原檔案，且不覆寫安裝後的額外修改。
 - 缺工具、失效連結、缺憑證、網路失敗均有可區分的診斷。
-- 版本清單與實際取得的第三方內容一致；repo 不含登入資料及機器狀態。
+- 本機安裝紀錄與當次取得的上游最新內容一致；repo 不含登入資料及機器狀態。
 - macOS 真機完整安裝與暫存目錄驗證分開報告；未測架構不得宣稱已驗證。
 
 ## 交付順序與界線
 
-設計確認後，先交付 repo 基礎文件、來源清單及共通規則，再交付設定模板與 skills 整理，最後完成安裝與驗證工具。第一版不重建專案資料庫內容，也不遷移歷史對話。
+已交付規則、來源清單、設定模板、安裝與驗證工具。第一版不重建專案資料庫內容，也不遷移歷史對話。
 
-使用者已指定遠端 `https://github.com/jamie-cloud99/workflow`。Markdown 預覽以 Ghostty + Glow 作為第一個可獨立交付的工具設定；repo 不改變遠端可見性。原始設定尚未批次匯出，其餘環境套用待後續實作。
+使用者已指定遠端 `https://github.com/jamie-cloud99/workflow`。Markdown 預覽以 Ghostty + Glow 作為第一個可獨立交付的工具設定；repo 不改變遠端可見性。只整理可攜帶的規則及設定，不批次匯出含機器狀態的原始檔案；目前 home 未整批套用。
 
 ## 本機盤點結果
 
@@ -135,4 +137,4 @@ token、OAuth、SSH/GPG 私鑰、歷史 session、快取、專案信任紀錄及
 - [Codex Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)：使用者與專案設定層次，以及專案信任的關係。
 - [Codex Build skills](https://learn.chatgpt.com/docs/build-skills)：使用者 skills 位置、symlink 支援，以及同名 skills 不自動合併。
 
-尚待使用者確認的是上述整體設計。各工具確切版本、來源及可攜欄位由實作時逐項查證後填入 `skills/sources.json` 與 `config/tools.json`；不得將未查證項目標成可安裝。
+工具版本與選用項目記在 `config/tools.json`；第三方 skills 以 `skills/sources.json` 管來源，每次同步上游最新版本。Homebrew 與人工登入的限制見 setup.md。

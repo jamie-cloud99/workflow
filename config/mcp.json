@@ -1,0 +1,8 @@
+{
+  "gitnexus": {"command": "gitnexus", "args": ["mcp"]},
+  "playwright": {"command": "npx", "args": ["--yes", "@playwright/mcp@0.0.80"]},
+  "chrome-devtools": {"command": "npx", "args": ["--yes", "chrome-devtools-mcp@1.9.0"]},
+  "context7": {"url": "https://mcp.context7.com/mcp"},
+  "deepwiki": {"url": "https://mcp.deepwiki.com/mcp"},
+  "notion": {"url": "https://mcp.notion.com/mcp"}
+}

@@ -1,0 +1,21 @@
+{
+  "node": "22.22.2",
+  "pnpm": "10.33.0",
+  "packages": {
+    "@openai/codex": "0.154.0",
+    "gitnexus": "1.6.5",
+    "playwriter": "0.4.0"
+  },
+  "extensions": [{"repository": "github/gh-stack", "revision": "v0.1.1"}],
+  "manual": [
+    {"name": "herdr", "url": "https://herdr.dev", "reason": "終端工作區選用工具；安裝方式依 CPU/OS 確認，skills 不等同已安裝 CLI。"},
+    {"name": "playwriter-browser-extension", "url": "https://github.com/remorses/playwriter", "reason": "需在 Chrome 安裝擴充套件並授權目標分頁。"},
+    {"name": "docker", "url": "https://docs.docker.com/desktop/setup/install/mac-install/", "reason": "專案需要容器時安裝；資料庫版本由專案決定。"}
+  ],
+  "plugins": [
+    {"runtime": "claude", "name": "code-simplifier@claude-plugins-official", "automatic": false},
+    {"runtime": "claude", "name": "skill-creator@claude-plugins-official", "automatic": false},
+    {"runtime": "claude", "name": "greptile@claude-plugins-official", "automatic": false},
+    {"runtime": "codex", "name": "lazyweb@lazyweb", "source": "https://github.com/aboul3ata/lazyweb-skill.git", "automatic": false}
+  ]
+}

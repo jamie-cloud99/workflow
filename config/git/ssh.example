@@ -1,0 +1,6 @@
+# 改成新電腦上真正使用的金鑰。只存設定，私鑰不進 repo。
+Host github-jamiecloud
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_jamiecloud
+  IdentitiesOnly yes

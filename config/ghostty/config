@@ -1,0 +1,8 @@
+font-family = MesloLGS NF
+font-size = 18
+theme = Modus Vivendi
+window-padding-x = 0
+window-padding-y = 0
+clipboard-read = deny
+clipboard-write = allow
+keybind = cmd+shift+enter=toggle_fullscreen
