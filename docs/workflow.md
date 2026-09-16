@@ -19,6 +19,8 @@
 
 開工讀規則與 Git 狀態，保留無關修改，以最小可驗證範圍實作。使用者要求 commit／push／PR 時完成操作，檢查精確 commit 的 CI，再回報成果。對外留言、merge 與破壞性資料操作維持在授權範圍。
 
+commit／PR 格式優先採用使用者本次要求，再採用 repo 規範；未指定時使用 skills 內的預設模板。PR 一律以 ELI20 說明：讓具基本軟體常識、未參與開發的 reviewer 看懂問題、修改後行為、必要取捨與驗證結果。repo 已有 template 時保留欄位，內容仍採 ELI20。
+
 截圖、unit test、真實 DB 測試、CI 與使用者驗收分別回答不同問題，不互相替代。
 
 Matt Pocock 工程 skills 第一次用在某專案前，先執行 `setup-matt-pocock-skills` 確認該專案的 issue tracker 與文件位置。`to-spec` 整理已討論的內容，不代替需求訪談；只有已授權發佈時才寫到外部 tracker。需要精簡回覆時使用 `caveman`，它不改變工作範圍或繁體中文偏好。

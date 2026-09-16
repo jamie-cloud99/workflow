@@ -31,6 +31,8 @@
 
 Matt Pocock 的工程 skills 第一次用於某專案前，執行 `setup-matt-pocock-skills` 設定 tracker 與文件位置。對外發佈仍依使用者授權。
 
+commit／PR 未指定格式時，分別使用 [commit 模板](common/workflow-commit/templates/default-commit.txt)與 [PR 模板](common/workflow-create-pr/templates/default-pr.md)。PR 以 ELI20 交代情境、改動後行為與驗證，已有 repo template 時沿用欄位。
+
 `/caveman` 啟用精簡回覆，保留技術資訊、命令、錯誤與使用者指定語言；`/caveman off` 關閉。本清單使用主 skill。
 
 ## 同步與套用
