@@ -34,11 +34,11 @@ cd workflow
 ## 工作方式
 
 - [日常工作流](docs/workflow.md)：需求、除錯、review、交付。
-- [Skills 清單](skills/README.md)：7 個自有 skills、15 個跟隨上游的第三方 skills。
-- [Markdown 預覽](docs/markdown-preview.md)：Ghostty + Glow，無 Warp 依賴。
-- [設計與邊界](docs/design.md)、[驗證紀錄](docs/verification.md)。
+- [Skills 清單](skills/README.md)：7 個自有 skills、18 個跟隨上游的第三方 skills。
+- [Markdown 預覽](docs/markdown-preview.md)：Ghostty + Glow。
+- [設計與邊界](docs/design.md)、[驗證方式](docs/verification.md)。
 
-已在隔離目錄驗證套用、重跑與還原，未在全新實體電腦執行整套套件安裝。設定、CLI 版本、登入與 MCP 連通分別檢查，不把設定可讀視為全部完成。
+設定、CLI 版本、登入與 MCP 連通分別檢查；操作與驗證範圍見文件。
 
 ## 維護
 

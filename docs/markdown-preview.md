@@ -29,7 +29,7 @@ python3 scripts/macos/install-markdown-preview.py --set-default
 open docs/design.md
 ```
 
-若 Ghostty 已安裝可跳過 cask 安裝。腳本支援 Homebrew 的 Intel 與 Apple Silicon 路徑；目前真機驗證為 Intel macOS，未宣稱完成 Apple Silicon 真機驗證。Homebrew 指令安裝當時可取得的版本，並非工具版本鎖定；這次驗證使用 Ghostty 1.3.1、Glow 3.0.0、duti 1.5.4。
+若 Ghostty 已安裝可跳過 cask 安裝。腳本支援 Homebrew 的 Intel 與 Apple Silicon 路徑。Homebrew 指令安裝當時可取得的版本。
 
 預覽 app 安裝至 `~/Applications/Markdown Preview.app`，包含閱讀腳本；安裝後可移動 repo，不影響預覽器。
 
@@ -67,7 +67,7 @@ python3 scripts/macos/install-markdown-preview.py --restore-defaults
 
 還原的是副檔名的有效預設 app，不是完整的 macOS LaunchServices 狀態或分角色偏好。如果你已手動改成其他 app，還原器會保留現況並回報衝突。
 
-**Warp 已預計移除，這台電腦建議需要時直接改用 TextEdit，而非恢復到 Warp：**
+要將預設開啟程式設為 TextEdit：
 
 ```sh
 duti -s com.apple.TextEdit .md all

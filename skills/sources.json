@@ -55,36 +55,6 @@
       "repository": "steveonead/agent-skills",
       "skills": [
         {
-          "name": "ito-explain",
-          "path": ".claude/skills/ito-explain",
-          "group": "common"
-        },
-        {
-          "name": "ito-search",
-          "path": ".claude/skills/ito-search",
-          "group": "common"
-        },
-        {
-          "name": "ito-prd",
-          "path": ".claude/skills/ito-prd",
-          "group": "common"
-        },
-        {
-          "name": "ito-grill",
-          "path": ".claude/skills/ito-grill",
-          "group": "common"
-        },
-        {
-          "name": "ito-tdd",
-          "path": ".claude/skills/ito-tdd",
-          "group": "common"
-        },
-        {
-          "name": "ito-skill",
-          "path": ".claude/skills/ito-skill",
-          "group": "common"
-        },
-        {
           "name": "react-best-practices",
           "path": ".claude/skills/react-best-practices",
           "group": "frontend"
@@ -105,7 +75,70 @@
           "group": "backend"
         }
       ]
+    },
+    {
+      "repository": "mattpocock/skills",
+      "skills": [
+        {
+          "name": "research",
+          "path": "skills/engineering/research",
+          "group": "common"
+        },
+        {
+          "name": "grill-me",
+          "path": "skills/productivity/grill-me",
+          "group": "common"
+        },
+        {
+          "name": "grilling",
+          "path": "skills/productivity/grilling",
+          "group": "common"
+        },
+        {
+          "name": "to-spec",
+          "path": "skills/engineering/to-spec",
+          "group": "common"
+        },
+        {
+          "name": "tdd",
+          "path": "skills/engineering/tdd",
+          "group": "common"
+        },
+        {
+          "name": "codebase-design",
+          "path": "skills/engineering/codebase-design",
+          "group": "common"
+        },
+        {
+          "name": "writing-for-agents",
+          "path": "skills/productivity/writing-for-agents",
+          "group": "common"
+        },
+        {
+          "name": "setup-matt-pocock-skills",
+          "path": "skills/engineering/setup-matt-pocock-skills",
+          "group": "common"
+        }
+      ]
+    },
+    {
+      "repository": "juliusbrussee/caveman",
+      "skills": [
+        {
+          "name": "caveman",
+          "path": "skills/caveman",
+          "group": "common"
+        }
+      ]
     }
   ],
-  "update_policy": "latest"
+  "update_policy": "latest",
+  "retired_skills": [
+    "ito-explain",
+    "ito-search",
+    "ito-prd",
+    "ito-grill",
+    "ito-tdd",
+    "ito-skill"
+  ]
 }

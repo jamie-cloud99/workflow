@@ -1,18 +1,38 @@
-# 驗證紀錄
+# 驗證方式與範圍
 
-2026-09-16，Intel macOS，本機 Python 3.11 與 3.14。
+## 本機
 
-- 33 項測試在 Python 3.11、3.14 均通過：入口自動選 interpreter、conflict 零覆寫、重複套用、原檔與 mode 還原、後續修改保留、備份歷程、併行鎖、寫入失敗復原、symlink 路徑保護、Markdown 預覽及 CLI 操作。
-- `./workflow` 驗證舊預設 Python 的跳過、較新小版本的自動發現、含空白 interpreter 路徑、不同工作目錄呼叫及不相容版本的安裝提示；不執行安裝或改寫 PATH。
-- latest 更新測試使用真正的本機 Git repo：先同步第一個 commit，上游新增第二個 commit 後再次同步，確認切換版本且 manifest 不需改動。
-- 模擬網路失敗，確認上一份完整 resolved 清單保留；本機 source cache 被修改時不會默默覆寫或採用。
-- 獨立 review 發現的同一 HEAD 新增 skill 選項問題已重現並修正；不同選用路徑使用獨立 checkout，不破壞上一份可用內容。
-- 實際連線核對 6 個 GitHub 來源的最新 HEAD，下載並檢查 15 個第三方 skills。
-- 7 個自有 skills 經 skill-creator 的格式驗證器檢查。
-- 含中文、空白的新 home 隔離路徑：54 個設定／連結套用、再次套用、doctor、Git include 實際解析、restore 全部完成。
-- 真實 home 只執行唯讀 plan，列出既有設定衝突，沒有整批替換。
-- Bash/Zsh 語法及 repo 的 JSON/TOML、Python、skill metadata、文件連結納入檢查。
+使用 Python 3.11 以上執行：
 
-界線：沒有在全新實體電腦完整執行 Homebrew／Volta 安裝，沒有搬移帳號登入、測 MCP OAuth 或驗證每個第三方 skill 的實際模型行為。CI 在 Linux/macOS 測試檔案與 CLI 邏輯，不代表這些外部系統已驗收。
+```sh
+python3 -m unittest discover -s tests -v
+python3 scripts/check.py
+bash -n workflow
+bash -n scripts/macos/preview-markdown.sh
+zsh -n config/shell/env.zsh
+```
 
-Markdown 預覽的本機 GUI 開檔與檔案關聯已於 2026-09-14 驗證。2026-09-16 使用者回報直接執行 app 資源腳本出現 permission denied，確認原本 mode 為 0644；安裝器已明確設定 0755，並以失去執行權限的來源檔測試實際執行。重新安裝 1.0.1 後，確認執行權限與開啟 design.md 的 Glow/less 程序；未以桌面截圖驗證畫面。
+測試涵蓋 Python 自動選擇、檔案衝突、重複套用、備份還原、後續修改保留、寫入中斷復原、鎖定、symlink、第三方 skills 更新及退休連結清理。Git 來源測試建立真正的本機 repository，驗證上游版本變動、選用路徑變動與失敗時保留可用清單。
+
+check.py 驗證 JSON/TOML、Python 語法、自有 skill metadata 與 Markdown 連結。
+
+## 隔離演練
+
+```sh
+./workflow plan --target '/tmp/workflow review' --local-only
+./workflow apply --target '/tmp/workflow review' --local-only
+./workflow doctor --target '/tmp/workflow review' --local-only --config-only
+./workflow restore --target '/tmp/workflow review'
+```
+
+要驗證第三方來源，對同一個 target 執行 sync-skills，並省略後續操作的 local-only。只在暫存 target 做套用／還原測試；確認 source cache、連結與 Git include 都使用該目標的路徑。
+
+## CI
+
+GitHub Actions 在 Linux/macOS 與 Python 3.11/3.14 執行測試、語法檢查及 launcher 預覽。實際結果查對應 commit 的 [Checks](https://github.com/jamie-cloud99/workflow/actions)。
+
+CI 不執行完整 Homebrew 安裝、帳號登入、MCP OAuth 或模型請求。這些項目需依新機的實際環境另行驗證。
+
+## Markdown 預覽
+
+安裝器測試檢查 script 執行權限、原預設程式備份及關聯更新的確認。macOS 真機需另外開啟 Markdown 文件，確認預設 app、文件參數與畫面內容；只有 open 成功或程序存在不足以證明畫面已正確呈現。

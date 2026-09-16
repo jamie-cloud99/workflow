@@ -1,12 +1,12 @@
 # 可攜式開發工作環境
 
-狀態：五目錄設計已確認，換機工具與文件已實作。真機與隔離驗證範圍見 verification.md。
+此文件描述 repo 的現行結構、設定責任與操作邊界。驗證方式見 verification.md。
 
-## 目標與已確認範圍
+## 用途與範圍
 
 以 `jamie-cloud99/workflow` repo 管理 macOS 開發環境，包含 Codex、Claude Code、共用 agent 規則、前後端 skills、MCP、Git、終端機及工具安裝。換機後能從 repo 重建工作方式，並清楚知道哪些項目還需登入或手動完成。
 
-使用者已確認 macOS 完整開發環境與五目錄結構，並指定第三方 skills 使用線上最新版本。
+支援 macOS 開發環境，採五目錄結構；第三方 skills 使用線上最新版本。
 
 ## 目錄：只分五種責任
 
@@ -79,7 +79,7 @@ workflow/
 
 核心清單涵蓋 Git、gh、搜尋與 JSON 工具、Node 工具鏈、Codex、Claude Code。沿用 Volta 作為 Node 工具鏈管理方式，實作時驗證安裝途徑。MCP、瀏覽器工具、Docker、終端機外觀及其他工具分組選用，舊專案依賴另行記錄。
 
-使用者已指定 Markdown 使用排版預覽；第一個工具子項目採 Ghostty + Glow。Warp 已預計移除，不列入新環境安裝依賴；其既有 plugin/hook 若出現在盤點中，列為退役候選，不能因舊設定存在就自動搬移或啟用。
+Markdown 使用 Ghostty + Glow 顯示排版預覽。安裝清單列在 config/Brewfile 與 config/tools.json。
 
 Intel 與 Apple Silicon 的 Homebrew 路徑於安裝時偵測。架構不支援的套件顯示原因，不自動套用另一架構的二進位檔。各工具以明確版本或可追溯安裝來源管理；Homebrew 項目若無法保證精確版本，文件說明限制。
 
@@ -110,27 +110,11 @@ token、OAuth、SSH/GPG 私鑰、歷史 session、快取、專案信任紀錄及
 - 本機安裝紀錄與當次取得的上游最新內容一致；repo 不含登入資料及機器狀態。
 - macOS 真機完整安裝與暫存目錄驗證分開報告；未測架構不得宣稱已驗證。
 
-## 交付順序與界線
+## 操作邊界
 
-已交付規則、來源清單、設定模板、安裝與驗證工具。第一版不重建專案資料庫內容，也不遷移歷史對話。
+本 repo 管理規則、來源清單、設定模板、安裝與驗證工具；不重建專案資料庫內容或遷移歷史對話。
 
-使用者已指定遠端 `https://github.com/jamie-cloud99/workflow`。Markdown 預覽以 Ghostty + Glow 作為第一個可獨立交付的工具設定；repo 不改變遠端可見性。只整理可攜帶的規則及設定，不批次匯出含機器狀態的原始檔案；目前 home 未整批套用。
-
-## 本機盤點結果
-
-盤點日期：2026-09-14。以下來自檔案結構、設定鍵名、symlink 狀態及命令路徑；命令存在不代表功能已驗證。
-
-- 使用者 skills 分散於 `~/.agents/skills`、`~/.codex/skills`、`~/.claude/skills`。
-- `~/.agents/.skill-lock.json` 有部分 skills 的來源及內容 hash；內容 hash 不可直接當成來源 repo 的 commit。
-- `find-skills` 在 Codex 與 Claude 的連結皆失效，Claude 的 `ito-hunt` 連結亦失效。
-- `superpowers` 連結指向本機 Codex 目錄中的絕對路徑。
-- Codex 設定包含 MCP、plugins、專案信任路徑及 hook 信任狀態；全域 `AGENTS.md` 是空檔。
-- Claude 全域規則包含 GitNexus 的本機絕對路徑；Codex 與 Claude hooks 也有絕對路徑。
-- Codex 的 MCP 名稱包含 notion、playwright、chrome-devtools、gitnexus；Claude 全域 MCP 名稱包含 deepwiki、context7、gitnexus。
-- 目前 `node`、`pnpm`、`npm`、`codex`、`gitnexus`、`playwriter` 由 Volta bin 路徑提供。
-- `~/.config/Brewfile` 仍列有 Node 14、nvm、MySQL 5.7、舊 OpenSSL 等項目，不能直接視為新機安裝清單。
-- `finance-system/package.json` 宣告 `pnpm@10.28.0`；`finance-system-ui/package.json` 的 Volta 設定指定 Node `22.22.2`、pnpm `10.33.0`。專案版本需求不強制改成同一組全域版本。
-- 後端現有 skills 包括 API、DDD、資料庫、測試、安全、PR 等；前端有元件、API 相容、Zod、單元測試、瀏覽器 QA 等 skills，並有獨立 governance 文件。
+遠端為 `https://github.com/jamie-cloud99/workflow`。設定以模板及來源清單管理，帳號登入與本機狀態由各電腦維護。
 
 ## 官方依據
 

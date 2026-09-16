@@ -35,6 +35,9 @@ def validate(manifest):
             path = Path(skill['path'])
             if path.is_absolute() or '..' in path.parts or not path.parts:
                 raise RuntimeError('Invalid skill source path.')
+    for name in manifest.get('retired_skills', []):
+        if not re.fullmatch(r'[a-z0-9-]+', name) or name in names:
+            raise RuntimeError('Invalid or still-active retired skill name.')
 
 
 def checkout_path(cache, repository, revision, skills):

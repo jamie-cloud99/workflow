@@ -70,10 +70,22 @@ def render(target, state, local_only=False):
     paths = {p.parent.name: p.parent for p in (ROOT / 'skills').glob('*/*/SKILL.md')}
     missing = []
     if not local_only:
-        external, missing = selected_paths(read_json(ROOT / 'skills/sources.json'), state / 'skills')
+        manifest = read_json(ROOT / 'skills/sources.json')
+        external, missing = selected_paths(manifest, state / 'skills')
         if set(external) & set(paths):
             raise RuntimeError('Duplicate local/external skill names.')
         paths.update(external)
+        # Retire only links installed by this tool. User-owned directories and
+        # links without a journal record must not be removed by catalog edits.
+        managed = ManagedFiles(target, state).load()['files']
+        for name in manifest.get('retired_skills', []):
+            for parent in ('.agents/skills', '.claude/skills'):
+                relative = parent + '/' + name
+                record = managed.get(relative)
+                if record and (record['installed']['kind'] == 'link' or
+                               (record['installed']['kind'] == 'missing' and
+                                record.get('pending', {}).get('kind') == 'link')):
+                    files[relative] = None
     for name, path in paths.items():
         files['.agents/skills/' + name] = {'link': str(path)}
         files['.claude/skills/' + name] = {'link': str(path)}

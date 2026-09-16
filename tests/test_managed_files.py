@@ -121,6 +121,31 @@ class ManagedFilesTest(unittest.TestCase):
         self.manager.restore()
         self.assertFalse((self.root / '.codex/AGENTS.md').exists())
 
+    def test_retired_link_is_removed_and_can_be_restored(self):
+        name = '.agents/skills/ito-search'
+        original = self.root / name
+        original.parent.mkdir(parents=True)
+        original.symlink_to('/original/skill')
+        self.manager.apply({name: {'link': '/managed/skill'}}, replace=True)
+        self.assertEqual(self.manager.plan({name: None})[0]['status'], 'remove')
+        self.manager.apply({name: None})
+        self.assertFalse(original.is_symlink())
+        self.manager.apply({name: None})
+        self.manager.restore()
+        import os
+        self.assertEqual(os.readlink(original), '/original/skill')
+
+    def test_retired_link_changed_by_user_is_preserved(self):
+        name = '.claude/skills/ito-search'
+        self.manager.apply({name: {'link': '/managed/skill'}})
+        path = self.root / name
+        path.unlink()
+        path.symlink_to('/user/skill')
+        with self.assertRaisesRegex(RuntimeError, 'conflict'):
+            self.manager.apply({name: None})
+        import os
+        self.assertEqual(os.readlink(path), '/user/skill')
+
 
 if __name__ == '__main__':
     unittest.main()

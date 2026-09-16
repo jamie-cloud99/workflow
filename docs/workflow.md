@@ -2,7 +2,7 @@
 
 | 任務 | 主要入口 | 完成證據 |
 | --- | --- | --- |
-| 釐清需求 | 未定案時選 ito-grill／ito-prd；明確時直接 workflow-delivery | 可觀察驗收結果與未定政策 |
+| 釐清需求 | 未定案時選 grill-me／to-spec；明確時直接 workflow-delivery | 可觀察驗收結果與未定政策 |
 | 實作 | workflow-delivery + 前後端專業 skill | 改動、測試、實際流程 |
 | 除錯 | workflow-debug | 重現、原因、修正前後結果 |
 | PR review | workflow-review | 精確 head/base、觸發情境、影響與位置 |
@@ -17,3 +17,5 @@
 開工讀規則與 Git 狀態，保留無關修改，以最小可驗證範圍實作。使用者要求 commit／push／PR 時完成操作，檢查精確 commit 的 CI，再回報成果。對外留言、merge 與破壞性資料操作維持在授權範圍。
 
 截圖、unit test、真實 DB 測試、CI 與使用者驗收分別回答不同問題，不互相替代。
+
+Matt Pocock 工程 skills 第一次用在某專案前，先執行 `setup-matt-pocock-skills` 確認該專案的 issue tracker 與文件位置。`to-spec` 整理已討論的內容，不代替需求訪談；只有已授權發佈時才寫到外部 tracker。需要精簡回覆時使用 `caveman`，它不改變工作範圍或繁體中文偏好。

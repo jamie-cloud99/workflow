@@ -28,6 +28,8 @@ def fingerprint(value):
 
 
 def desired(value):
+    if value is None:
+        return {'kind': 'missing'}
     if isinstance(value, bytes):
         return {'kind': 'file', 'data': base64.b64encode(value).decode(), 'mode': 0o600}
     return {'kind': 'link', 'link': str(value['link'])}
@@ -130,8 +132,9 @@ class ManagedFiles:
                 status = 'unchanged'
             elif current['kind'] == 'missing' and not record:
                 status = 'create'
-            elif record and fingerprint(current) == fingerprint(record['installed']):
-                status = 'update'
+            elif record and any(fingerprint(current) == fingerprint(record[key])
+                                for key in ('installed', 'pending') if key in record):
+                status = 'remove' if expected['kind'] == 'missing' else 'update'
             else:
                 status = 'conflict'
             rows.append({'path': relative, 'status': status})
@@ -151,6 +154,10 @@ class ManagedFiles:
             for row in rows:
                 name = row['path']
                 if row['status'] == 'unchanged':
+                    record = journal['files'].get(name)
+                    if record and 'pending' in record and fingerprint(snapshot(self.path(name))) == fingerprint(record['installed']):
+                        record.pop('pending')
+                        self.save(journal)
                     continue
                 path = self.path(name)
                 if fingerprint(snapshot(path)) != fingerprint(before[name]):

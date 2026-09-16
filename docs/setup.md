@@ -47,7 +47,7 @@ sync-skills 每次向各 repo 查詢預設分支最新 HEAD，再下載選定 sk
 
 repo 的 `skills/sources.json` 只記來源、路徑與分類，不固定 commit 或 checksum。本機 `~/.local/state/workflow/skills/resolved.json` 記錄實際取得的 commit 與內容摘要，供診斷及檢查 cache 是否被修改，不阻止取得更新版本。
 
-plan 不下載、不寫設定、不建立目標目錄；顯示 create、update、unchanged、conflict。缺 skills 或衝突時 exit 2。apply 先檢查全部目的地，遇到衝突不開始改寫設定。
+plan 不下載、不寫設定、不建立目標目錄；顯示 create、update、remove、unchanged、conflict。缺 skills 或衝突時 exit 2。apply 先檢查全部目的地，遇到衝突不開始改寫設定。
 
 要採用模板取代既有設定，先讀衝突檔案與 `config/`，再執行：
 
@@ -57,7 +57,9 @@ plan 不下載、不寫設定、不建立目標目錄；顯示 create、update�
 
 會備份原檔案／leaf symlink，**不取代既有實體 skill 目錄**；需要時自行移走或合併。`.zshrc`、`.gitconfig` 保留原文，加入一個引用區塊；其他完整設定檔採模板替換，不進行任意深度 merge。
 
-共通規則安裝到 Codex 與 Claude 的全域規則檔，skills 逐一連結到 `~/.agents/skills`、`~/.claude/skills`。舊目錄不自動清除；遷移時自行檢查同名重複項。套用後開新終端，或 `source ~/.config/workflow/env.zsh`。不搬移 Oh My Zsh cache 或既有 shell plugin。
+共通規則安裝到 Codex 與 Claude 的全域規則檔，skills 逐一連結到 `~/.agents/skills`、`~/.claude/skills`。來源清單列為退役的 skill，只有本工具曾管理的連結會在 apply 移除；手動安裝的目錄與未管理連結保留。連結被使用者改動時回報 conflict。`--local-only` 不執行第三方技能遷移。套用後開新終端，或 `source ~/.config/workflow/env.zsh`。不搬移 Oh My Zsh cache 或既有 shell plugin。
+
+Matt Pocock 的工程 skills 首次用在各專案前，執行 `setup-matt-pocock-skills` 設定該專案的 issue tracker 與文件位置；全域安裝不會代替專案做這個選擇。
 
 ## 4. 登入與 MCP
 

@@ -1,10 +1,37 @@
 # Skills
 
-`common/`、`frontend/`、`backend/` 存放 7 個自有流程 skills；不包含 finance 專案業務資料。
+`common/`、`frontend/`、`backend/` 存放 7 個自有流程 skills。`sources.json` 管理 18 個第三方 skills 的來源、路徑與分類。
 
-`sources.json` 管理 15 個第三方 skills：gh-stack、impeccable、shadcn、playwriter、herdr、ito-explain、ito-search、ito-prd、ito-grill、ito-tdd、ito-skill，以及 React、Zod、NestJS、Supertest best practices。
+## 第三方來源
 
-## 更新方式
+| 來源 | Skills |
+| --- | --- |
+| [github/gh-stack](https://github.com/github/gh-stack) | gh-stack |
+| [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | impeccable |
+| [shadcn/ui](https://github.com/shadcn/ui) | shadcn |
+| [remorses/playwriter](https://github.com/remorses/playwriter) | playwriter |
+| [herdrdev/herdr](https://github.com/herdrdev/herdr) | herdr |
+| [juliusbrussee/caveman](https://github.com/juliusbrussee/caveman) | caveman |
+| [mattpocock/skills](https://github.com/mattpocock/skills) | research、grill-me、grilling、to-spec、tdd、codebase-design、writing-for-agents、setup-matt-pocock-skills |
+| [steveonead/agent-skills](https://github.com/steveonead/agent-skills) | react-best-practices、zod-best-practices、nestjs-best-practices、supertest-best-practices |
+
+## 主要入口
+
+| 需求 | 入口 |
+| --- | --- |
+| 調查原始碼、官方文件與 API | research |
+| 需求訪談 | grill-me；由 grilling 執行 |
+| 彙整已討論內容為 spec | to-spec |
+| Test-first 開發 | tdd；codebase-design 提供介面設計語彙 |
+| 撰寫 skill 與 agent 文件 | writing-for-agents |
+| 專案 tracker 與文件位置設定 | setup-matt-pocock-skills |
+| 精簡回覆 | caveman |
+
+Matt Pocock 的工程 skills 第一次用於某專案前，執行 `setup-matt-pocock-skills` 設定 tracker 與文件位置。對外發佈仍依使用者授權。
+
+`/caveman` 啟用精簡回覆，保留技術資訊、命令、錯誤與使用者指定語言；`/caveman off` 關閉。本清單使用主 skill。
+
+## 同步與套用
 
 ```sh
 ./workflow sync-skills
@@ -12,16 +39,8 @@
 ./workflow apply
 ```
 
-每次 sync 都向上游查詢最新 HEAD；manifest 不鎖 commit 或 checksum，也不在每次開啟 agent 時下載。下載成功後的 commit 與摘要只記在本機，方便知道用了哪一版及偵測本機 cache 修改。
+每次 sync 都查詢上游最新 HEAD。repo 不鎖 commit 或 checksum；實際取得的版本與摘要保存在本機。來源失敗時保留上一份完整清單，apply 才切換連結；cache 有本機修改時會停止。
 
-若某個來源失敗或路徑被移除，上一份完整清單仍有效；不會靜默選錯其他 skill。舊 checkout 保留，apply 才切換連結。cache 有本機修改會停止，避免默默覆寫或把修改當作上游版本。
+`retired_skills` 指定不再啟用的名稱。apply 只移除本工具管理且未被修改的連結；手動安裝的目錄及未管理連結保留，衝突需先處理。相關操作見[換機說明](../docs/setup.md)。
 
-新增來源時填 repository、skill 路徑、名稱與分類，再 sync 驗證；同一階段避免多個 skill 重複接管流程。
-
-## 舊機遷移
-
-- 最新 impeccable 已沒有獨立的 frontend-design 目錄，使用 impeccable 入口。
-- 舊 ito-issues／失效的 ito-hunt 不自行改名；需要時再選目前上游對應功能。
-- Superpowers 等完整主流程未預設搬入，避免重複；保留既有安裝時，同階段仍選一個主流程。
-- GitNexus CLI／MCP 已配置。舊全域 skills、codex-insights、playwright-interactive 與專案 skills 不盲目搬移，依實際需求和來源再納入。
-- 第三方原始碼從作者 repo 下載，不複製提交到此 repo。授權文件與 Git 記錄隨本機 checkout 保留。
+新增來源時填 repository、skill 路徑、名稱與分類，再 sync 驗證。第三方原始碼、授權文件與 Git 記錄保存在本機 checkout。
