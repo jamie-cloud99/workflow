@@ -6,3 +6,4 @@
 - Use Git commits for change history and rationale. Do not add before/after timelines, migration histories, or completion logs to README files or create separate history documents.
 - Documentation describes current design, operations, and verification, including the current guidance users need to update and restore their setup.
 - Preserve third-party skills in their upstream language; do not translate or fork downloaded sources as part of synchronization.
+- Keep skill descriptions short and narrowly scoped. Retain instructions that change decisions, project-specific conventions, and completion boundaries; omit generic recipes. Link optional templates or references only when relevant, and avoid mandatory document reads or repeated checks for trivial edits.

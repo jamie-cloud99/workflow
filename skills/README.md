@@ -19,6 +19,8 @@
 
 | 需求 | 入口 |
 | --- | --- |
+| 實作交付、交付前自查與交接 | [workflow-delivery](common/workflow-delivery/SKILL.md) |
+| 自己的變更自查、擔任 reviewer、處理 review 回饋 | [workflow-review](common/workflow-review/SKILL.md) |
 | 建立 commit、整理提交範圍 | [workflow-commit](common/workflow-commit/SKILL.md) |
 | 建立／更新 GitHub PR、確認遠端 CI | [workflow-create-pr](common/workflow-create-pr/SKILL.md) |
 | 調查原始碼、官方文件與 API | research |
