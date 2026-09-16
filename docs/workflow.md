@@ -45,3 +45,5 @@ Skills 保持精簡：description 只說明明確用途，本文保留影響判�
 DDD、CQRS、Hexagonal Architecture 與 BDD 是[按需選用的 skills](../skills/README.md#按需選用)，不屬於必跑階段。釐清行為時可用 BDD 補充具體例子；設計或維護相關架構時才載入對應 skill。一般任務維持既有架構，選用一項不代表連帶採用其他模式。
 
 需要明確檔案覆蓋清單或依檔案匹配審查規則時，可搭配 `open-code-review-delegate` 與選用的 `ocr` CLI。它由目前 agent 執行判斷，並非獨立第二位 reviewer；沿用實際 base／head、列出排除或略過檔案，結果仍須核實。未安裝 CLI 時可直接沿用原 review 工具。
+
+技術說明需要互動架構圖、資料流、時序或狀態圖時，可選用 `archify`；簡單圖使用 Mermaid，完整簡報使用 open-slide。先核對真實節點與關係，再驗證輸出；schema、版面與連線檢查不能替代原始碼證據或視覺驗收。
