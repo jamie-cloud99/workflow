@@ -2,7 +2,7 @@
 
 2026-09-16，Intel macOS，本機 Python 3.11 與 3.14。
 
-- 32 項測試在 Python 3.11、3.14 均通過：入口自動選 interpreter、conflict 零覆寫、重複套用、原檔與 mode 還原、後續修改保留、備份歷程、併行鎖、寫入失敗復原、symlink 路徑保護、Markdown 預覽及 CLI 操作。
+- 33 項測試在 Python 3.11、3.14 均通過：入口自動選 interpreter、conflict 零覆寫、重複套用、原檔與 mode 還原、後續修改保留、備份歷程、併行鎖、寫入失敗復原、symlink 路徑保護、Markdown 預覽及 CLI 操作。
 - `./workflow` 驗證舊預設 Python 的跳過、較新小版本的自動發現、含空白 interpreter 路徑、不同工作目錄呼叫及不相容版本的安裝提示；不執行安裝或改寫 PATH。
 - latest 更新測試使用真正的本機 Git repo：先同步第一個 commit，上游新增第二個 commit 後再次同步，確認切換版本且 manifest 不需改動。
 - 模擬網路失敗，確認上一份完整 resolved 清單保留；本機 source cache 被修改時不會默默覆寫或採用。
@@ -15,4 +15,4 @@
 
 界線：沒有在全新實體電腦完整執行 Homebrew／Volta 安裝，沒有搬移帳號登入、測 MCP OAuth 或驗證每個第三方 skill 的實際模型行為。CI 在 Linux/macOS 測試檔案與 CLI 邏輯，不代表這些外部系統已驗收。
 
-Markdown 預覽的本機 GUI 開檔與檔案關聯已於 2026-09-14 驗證，這次保留既有功能。
+Markdown 預覽的本機 GUI 開檔與檔案關聯已於 2026-09-14 驗證。2026-09-16 使用者回報直接執行 app 資源腳本出現 permission denied，確認原本 mode 為 0644；安裝器已明確設定 0755，並以失去執行權限的來源檔測試實際執行。重新安裝 1.0.1 後，確認執行權限與開啟 design.md 的 Glow/less 程序；未以桌面截圖驗證畫面。

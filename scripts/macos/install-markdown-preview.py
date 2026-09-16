@@ -83,16 +83,19 @@ def restore_defaults(duti, state):
 def build_app(destination):
     run('/usr/bin/osacompile', '-o', destination,
         ROOT / 'config/macos/Markdown Preview.applescript')
-    shutil.copy2(ROOT / 'scripts/macos/preview-markdown.sh',
-                 destination / 'Contents/Resources/preview-markdown.sh')
+    reader = destination / 'Contents/Resources/preview-markdown.sh'
+    shutil.copy2(ROOT / 'scripts/macos/preview-markdown.sh', reader)
+    # Source archives or checkouts can lose executable bits. The bundled script
+    # must also be launchable directly by macOS/terminal file-open integrations.
+    reader.chmod(0o755)
     plist_path = destination / 'Contents/Info.plist'
     with plist_path.open('rb') as stream:
         info = plistlib.load(stream)
     info.update({
         'CFBundleIdentifier': BUNDLE_ID,
         'CFBundleName': 'Markdown Preview',
-        'CFBundleShortVersionString': '1.0.0',
-        'CFBundleVersion': '1',
+        'CFBundleShortVersionString': '1.0.1',
+        'CFBundleVersion': '2',
         'LSUIElement': True,
         'CFBundleDocumentTypes': [{
             'CFBundleTypeName': 'Markdown document',

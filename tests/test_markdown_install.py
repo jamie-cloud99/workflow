@@ -1,6 +1,8 @@
 import importlib.util
 from pathlib import Path
 import tempfile
+import plistlib
+import subprocess
 import unittest
 from unittest.mock import patch
 
@@ -11,6 +13,27 @@ SPEC.loader.exec_module(installer)
 
 
 class DefaultsTest(unittest.TestCase):
+    def test_bundled_reader_runs_when_source_has_no_execute_permission(self):
+        with tempfile.TemporaryDirectory(prefix='preview bundle ') as temp:
+            root = Path(temp)
+            source = root / 'scripts/macos/preview-markdown.sh'
+            source.parent.mkdir(parents=True)
+            source.write_text('#!/bin/sh\nprintf "%s\\n" "$1"\n')
+            source.chmod(0o644)
+            app = root / 'Markdown Preview.app'
+
+            def native_tool(*args):
+                if args[0] == '/usr/bin/osacompile':
+                    (app / 'Contents/Resources').mkdir(parents=True)
+                    (app / 'Contents/Info.plist').write_bytes(plistlib.dumps({}))
+
+            with patch.object(installer, 'ROOT', root), patch.object(installer, 'run', side_effect=native_tool):
+                installer.build_app(app)
+            reader = app / 'Contents/Resources/preview-markdown.sh'
+            result = subprocess.run([str(reader), '中文 design.md'], text=True, capture_output=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout.strip(), '中文 design.md')
+
     def test_launch_services_can_return_a_stale_default_after_successful_write(self):
         with patch.object(installer, 'default_app', side_effect=['previous.app', installer.BUNDLE_ID]):
             with patch('time.sleep'):
