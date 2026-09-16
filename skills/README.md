@@ -1,6 +1,6 @@
 # Skills
 
-`common/`、`frontend/`、`backend/` 存放 10 個自有流程 skills。`sources.json` 管理 18 個第三方 skills 的來源、路徑與分類。
+`common/`、`frontend/`、`backend/` 存放 14 個自有流程 skills。`sources.json` 管理 18 個第三方 skills 的來源、路徑與分類。
 
 ## 第三方來源
 
@@ -37,6 +37,19 @@ Matt Pocock 的工程 skills 第一次用於某專案前，執行 `setup-matt-po
 commit／PR 未指定格式時，分別使用 [commit 模板](common/workflow-commit/templates/default-commit.txt)與 [PR 模板](common/workflow-create-pr/templates/default-pr.md)。PR 以 ELI20 交代情境、改動後行為與驗證，已有 repo template 時沿用欄位。
 
 `/caveman` 啟用精簡回覆，保留技術資訊、命令、錯誤與使用者指定語言；`/caveman off` 關閉。本清單使用主 skill。
+
+## 按需選用
+
+下列 skills 是可選的專業指引，已安裝不代表每個任務都要使用。使用者要求、專案已採用且改動涉及其邊界，或任務有明確需求時才選用；一般 CRUD、文件與小修正不需套用整套方法。
+
+| Skill | 適用情境 | 不預設引入 |
+| --- | --- | --- |
+| [workflow-ddd](backend/workflow-ddd/SKILL.md) | 領域語言、bounded context、aggregate 與不變條件 | 微服務、完整 DDD 樣板 |
+| [workflow-cqrs](backend/workflow-cqrs/SKILL.md) | 讀寫模型需要分離或維護既有 CQRS | Event Sourcing、獨立資料庫、eventual consistency |
+| [workflow-hexagonal](backend/workflow-hexagonal/SKILL.md) | 以 ports／adapters 隔離核心與外部依賴 | 每個類別都建立 interface、多餘分層 |
+| [workflow-bdd](common/workflow-bdd/SKILL.md) | 透過具體例子釐清行為與驗收 | Cucumber、全部改寫為 E2E、重複需求訪談 |
+
+可依情境組合，但不互相強制載入。每個 skill 只保留精簡決策指引，原始概念來源在各文件內按需參考。導入新架構仍限於任務範圍，不因選用 skill 擴大成全面重構。
 
 ## 同步與套用
 

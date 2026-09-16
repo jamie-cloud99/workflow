@@ -41,3 +41,5 @@ Review 依任務角色分流：自己的變更可在已授權範圍內自查、�
 提交與 push 前重新核對目標 branch、PR head／base 與 remote，避免共用 checkout 中途切換分支。新增元件、hook 或工具函式前先搜尋既有實作。版本、schema 與 domain 定義等判斷提供可追溯證據；CI-only 失敗先讀該版本 log、比較環境並嘗試重現，不靠猜測性 push 反覆試錯。分支切換不會重設資料庫，排查 schema 錯誤時需核對 migration 狀態。
 
 Skills 保持精簡：description 只說明明確用途，本文保留影響判斷的慣例、邊界與完成條件；模板需要時才讀。依任務選擇相關文件與驗證，必要檢查通過後，只有新變更、失敗或未解疑慮才擴大或重跑。已授權工作持續做到完成，不因切換 skill 重複要求確認。
+
+DDD、CQRS、Hexagonal Architecture 與 BDD 是[按需選用的 skills](../skills/README.md#按需選用)，不屬於必跑階段。釐清行為時可用 BDD 補充具體例子；設計或維護相關架構時才載入對應 skill。一般任務維持既有架構，選用一項不代表連帶採用其他模式。
