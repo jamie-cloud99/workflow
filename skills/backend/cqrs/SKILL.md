@@ -1,9 +1,9 @@
 ---
-name: workflow-cqrs
+name: cqrs
 description: Design or review command/query model separation when CQRS is requested or already used.
 ---
 
-# workflow-cqrs
+# cqrs
 
 Use when read and write responsibilities need distinct models; slow queries alone do not establish that need.
 

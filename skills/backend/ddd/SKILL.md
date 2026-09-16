@@ -1,9 +1,9 @@
 ---
-name: workflow-ddd
+name: ddd
 description: Design or review domain models, bounded contexts, and aggregate invariants when DDD is requested or already used.
 ---
 
-# workflow-ddd
+# ddd
 
 Use for a domain-modeling problem, not as a default architecture for ordinary CRUD.
 

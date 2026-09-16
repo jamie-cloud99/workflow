@@ -1,9 +1,9 @@
 ---
-name: workflow-hexagonal
+name: hexagonal-architecture
 description: Design or review ports and adapters when isolating application logic from external dependencies.
 ---
 
-# workflow-hexagonal
+# hexagonal-architecture
 
 Use when a real dependency boundary needs isolation or the project already uses hexagonal architecture. Do not introduce layers solely to match a diagram.
 

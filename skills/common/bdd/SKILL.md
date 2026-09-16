@@ -1,9 +1,9 @@
 ---
-name: workflow-bdd
+name: bdd
 description: Clarify acceptance behavior with concrete examples when BDD or example-based specification is needed.
 ---
 
-# workflow-bdd
+# bdd
 
 Use to resolve ambiguous business behavior with stakeholders, not to impose a new test framework on every task.
 

@@ -44,10 +44,10 @@ commit／PR 未指定格式時，分別使用 [commit 模板](common/workflow-co
 
 | Skill | 適用情境 | 不預設引入 |
 | --- | --- | --- |
-| [workflow-ddd](backend/workflow-ddd/SKILL.md) | 領域語言、bounded context、aggregate 與不變條件 | 微服務、完整 DDD 樣板 |
-| [workflow-cqrs](backend/workflow-cqrs/SKILL.md) | 讀寫模型需要分離或維護既有 CQRS | Event Sourcing、獨立資料庫、eventual consistency |
-| [workflow-hexagonal](backend/workflow-hexagonal/SKILL.md) | 以 ports／adapters 隔離核心與外部依賴 | 每個類別都建立 interface、多餘分層 |
-| [workflow-bdd](common/workflow-bdd/SKILL.md) | 透過具體例子釐清行為與驗收 | Cucumber、全部改寫為 E2E、重複需求訪談 |
+| [ddd](backend/ddd/SKILL.md) | 領域語言、bounded context、aggregate 與不變條件 | 微服務、完整 DDD 樣板 |
+| [cqrs](backend/cqrs/SKILL.md) | 讀寫模型需要分離或維護既有 CQRS | Event Sourcing、獨立資料庫、eventual consistency |
+| [hexagonal-architecture](backend/hexagonal-architecture/SKILL.md) | 以 ports／adapters 隔離核心與外部依賴 | 每個類別都建立 interface、多餘分層 |
+| [bdd](common/bdd/SKILL.md) | 透過具體例子釐清行為與驗收 | Cucumber、全部改寫為 E2E、重複需求訪談 |
 
 可依情境組合，但不互相強制載入。每個 skill 只保留精簡決策指引，原始概念來源在各文件內按需參考。導入新架構仍限於任務範圍，不因選用 skill 擴大成全面重構。
 

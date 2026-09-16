@@ -139,6 +139,10 @@
     "ito-prd",
     "ito-grill",
     "ito-tdd",
-    "ito-skill"
+    "ito-skill",
+    "workflow-ddd",
+    "workflow-cqrs",
+    "workflow-hexagonal",
+    "workflow-bdd"
   ]
 }
