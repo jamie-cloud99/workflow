@@ -1,5 +1,7 @@
 import json
+import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -48,6 +50,63 @@ class WorkflowTest(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertEqual(json.loads(path.read_text()), {'custom': True})
         self.assertFalse((self.target / '.codex/AGENTS.md').exists())
+
+    def test_shell_and_herdr_preserve_local_settings_and_restore(self):
+        self.target.mkdir()
+        original = '# Local shell settings\nexport LOCAL_SETTING=kept\n'
+        (self.target / '.zshrc').write_text(original)
+        herdr = self.target / '.config/herdr/config.toml'
+        herdr.parent.mkdir(parents=True)
+        herdr.write_text('[ui.sound]\nenabled = true\n')
+        self.assertNotEqual(self.command('apply').returncode, 0)
+        for _ in range(2):
+            result = self.command('apply', '--replace')
+            self.assertEqual(result.returncode, 0, result.stderr)
+        text = (self.target / '.zshrc').read_text()
+        self.assertTrue(text.startswith(original))
+        self.assertEqual(text.count('# workflow:start'), 1)
+        self.assertIn('interactive.zsh', text)
+        self.assertEqual(self.command('doctor', '--config-only').returncode, 0)
+        self.assertEqual(self.command('restore').returncode, 0)
+        self.assertEqual((self.target / '.zshrc').read_text(), original)
+        self.assertEqual(herdr.read_text(), '[ui.sound]\nenabled = true\n')
+        self.assertFalse((self.target / '.config/workflow/interactive.zsh').exists())
+
+    @unittest.skipUnless(shutil.which('zsh'), 'zsh is required')
+    def test_interactive_shell_initializes_tools_once(self):
+        self.assertEqual(self.command('apply').returncode, 0)
+        prefix = self.target / 'brew'
+        for relative, content in {
+            'share/powerlevel10k/powerlevel10k.zsh-theme':
+                'print theme >> "$HOME/events"\nfunction p10k() { :; }\n',
+            'share/zsh-autosuggestions/zsh-autosuggestions.zsh':
+                'print suggestions >> "$HOME/events"\nfunction _zsh_autosuggest_start() { :; }\n',
+            'bin/fzf': '#!/bin/sh\nprintf "%s\\n" \'print fzf >> "$HOME/events"; function fzf-history-widget() { :; }\'\n',
+            'bin/zoxide': '#!/bin/sh\nprintf "%s\\n" \'print zoxide >> "$HOME/events"; function __zoxide_z() { :; }\'\n',
+        }.items():
+            path = prefix / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(content)
+            path.chmod(0o755)
+        script = '''
+function compdef() { :; }
+source "$HOME/.config/workflow/interactive.zsh"
+source "$HOME/.config/workflow/interactive.zsh"
+[[ $POWERLEVEL9K_DIR_BACKGROUND == '#25364A' ]] || exit 3
+[[ $POWERLEVEL9K_VCS_BACKGROUND == '#382B46' ]] || exit 4
+'''
+        env = dict(os.environ, HOME=str(self.target), ZDOTDIR=str(self.target),
+                   HOMEBREW_PREFIX=str(prefix), PATH=str(prefix / 'bin') + ':/usr/bin:/bin')
+        result = subprocess.run(['zsh', '-f', '-i', '-c', script], env=env,
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertCountEqual((self.target / 'events').read_text().splitlines(),
+                              ['theme', 'suggestions', 'fzf', 'zoxide'])
+        (self.target / 'events').unlink()
+        result = subprocess.run(['zsh', '-f', '-c', 'source "$HOME/.zshrc"'], env=env,
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertFalse((self.target / 'events').exists())
 
     def test_doctor_can_limit_itself_to_configuration(self):
         self.assertEqual(self.command('apply').returncode, 0)

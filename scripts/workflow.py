@@ -60,11 +60,17 @@ def render(target, state, local_only=False):
     files['.codex/config.toml'] = codex.encode()
     files['.claude/settings.json'] = (ROOT / 'config/claude/settings.json').read_bytes()
     files['.config/ghostty/config'] = (ROOT / 'config/ghostty/config').read_bytes()
+    files['.config/herdr/config.toml'] = (ROOT / 'config/herdr/config.toml').read_bytes()
     files['.config/workflow/gitconfig'] = (ROOT / 'config/git/config').read_bytes()
     files['.config/workflow/env.zsh'] = (ROOT / 'config/shell/env.zsh').read_bytes()
+    for name in ('interactive.zsh', 'p10k.zsh'):
+        files['.config/workflow/' + name] = (ROOT / 'config/shell' / name).read_bytes()
     files['.config/workflow/mcp.json'] = json.dumps({'mcpServers': mcp}, indent=2).encode() + b'\n'
-    files['.zshrc'] = block(existing_text(target / '.zshrc'),
-                           'source ' + shlex.quote(str(target / '.config/workflow/env.zsh'))).encode()
+    shell_block = ('source ' + shlex.quote(str(target / '.config/workflow/env.zsh')) + '\n'
+                   'if [[ -o interactive ]]; then\n'
+                   '  source ' + shlex.quote(str(target / '.config/workflow/interactive.zsh')) + '\n'
+                   'fi')
+    files['.zshrc'] = block(existing_text(target / '.zshrc'), shell_block).encode()
     files['.gitconfig'] = block(existing_text(target / '.gitconfig'),
                                '[include]\n    path = ' + json.dumps(str(target / '.config/workflow/gitconfig'), ensure_ascii=False)).encode()
     paths = {p.parent.name: p.parent for p in (ROOT / 'skills').glob('*/*/SKILL.md')}
@@ -158,7 +164,8 @@ def doctor(manager, files, missing, config_only=False, online=False):
         if row['status'] != 'unchanged':
             problems.append(row['status'] + ': ' + row['path'])
     problems.extend('missing skill: ' + name for name in missing)
-    for relative, parser in [('.codex/config.toml', tomllib.loads), ('.claude/settings.json', json.loads)]:
+    for relative, parser in [('.codex/config.toml', tomllib.loads), ('.claude/settings.json', json.loads),
+                             ('.config/herdr/config.toml', tomllib.loads)]:
         try:
             parser((manager.target / relative).read_text())
         except (ValueError, OSError) as error:

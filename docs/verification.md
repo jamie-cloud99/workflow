@@ -10,6 +10,8 @@ python3 scripts/check.py
 bash -n workflow
 bash -n scripts/macos/preview-markdown.sh
 zsh -n config/shell/env.zsh
+zsh -n config/shell/interactive.zsh
+zsh -n config/shell/p10k.zsh
 ```
 
 測試涵蓋 Python 自動選擇、檔案衝突、重複套用、備份還原、後續修改保留、寫入中斷復原、鎖定、symlink、第三方 skills 更新及退休連結清理。Git 來源測試建立真正的本機 repository，驗證上游版本變動、選用路徑變動與失敗時保留可用清單。

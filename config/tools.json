@@ -15,6 +15,7 @@
     {"name": "docker", "url": "https://docs.docker.com/desktop/setup/install/mac-install/", "reason": "專案需要容器時安裝；資料庫版本由專案決定。"}
   ],
   "plugins": [
+    {"runtime": "herdr", "name": "herdr.auto-title", "source": "https://github.com/kryptamine/herdr-auto-title", "reference_version": "0.6.0", "automatic": false},
     {"runtime": "claude", "name": "code-simplifier@claude-plugins-official", "automatic": false},
     {"runtime": "claude", "name": "skill-creator@claude-plugins-official", "automatic": false},
     {"runtime": "claude", "name": "greptile@claude-plugins-official", "automatic": false},

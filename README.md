@@ -47,6 +47,8 @@ cd workflow
 python3 -m unittest discover -s tests -v
 bash -n scripts/macos/preview-markdown.sh
 zsh -n config/shell/env.zsh
+zsh -n config/shell/interactive.zsh
+zsh -n config/shell/p10k.zsh
 ```
 
 本 repo 不含私鑰、token、OAuth、歷史對話或專案資料。skills 連結依賴此 repo 與下載 cache 的位置；搬動 repo 前先 restore，再從新位置 apply。

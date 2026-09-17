@@ -57,7 +57,26 @@ plan 不下載、不寫設定、不建立目標目錄；顯示 create、update�
 
 會備份原檔案／leaf symlink，**不取代既有實體 skill 目錄**；需要時自行移走或合併。`.zshrc`、`.gitconfig` 保留原文，加入一個引用區塊；其他完整設定檔採模板替換，不進行任意深度 merge。
 
-共通規則安裝到 Codex 與 Claude 的全域規則檔，skills 逐一連結到 `~/.agents/skills`、`~/.claude/skills`。來源清單列為退役的 skill，只有本工具曾管理的連結會在 apply 移除；手動安裝的目錄與未管理連結保留。連結被使用者改動時回報 conflict。`--local-only` 不執行第三方技能遷移。套用後開新終端，或 `source ~/.config/workflow/env.zsh`。不搬移 Oh My Zsh cache 或既有 shell plugin。
+共通規則安裝到 Codex 與 Claude 的全域規則檔，skills 逐一連結到 `~/.agents/skills`、`~/.claude/skills`。來源清單列為退役的 skill，只有本工具曾管理的連結會在 apply 移除；手動安裝的目錄與未管理連結保留。連結被使用者改動時回報 conflict。`--local-only` 不執行第三方技能遷移。套用後開新終端。不搬移 Oh My Zsh cache 或既有 shell plugin。
+
+### zsh 與 Herdr
+
+`.zshrc` 的 `# workflow:start`／`# workflow:end` 區塊先載入 `~/.config/workflow/env.zsh`，再於互動模式載入 `interactive.zsh`。區塊外的 RVM、私人環境變數與其他本機設定保留；整份 `.zshrc` 不匯入 repo。
+
+| 維護位置 | 套用位置與用途 |
+| --- | --- |
+| `config/shell/env.zsh` | `~/.config/workflow/env.zsh`；PATH、Volta |
+| `config/shell/interactive.zsh` | `~/.config/workflow/interactive.zsh`；補完、歷史、prompt、fzf、zoxide、autosuggestions |
+| `config/shell/p10k.zsh` | `~/.config/workflow/p10k.zsh`；目前的配色、分隔符號與中文 Git 狀態 |
+| `config/herdr/config.toml` | `~/.config/herdr/config.toml`；Catppuccin、系統通知、關閉音效 |
+
+Brewfile 安裝 fzf、zoxide、zsh-autosuggestions 與 [Powerlevel10k](https://formulae.brew.sh/formula/powerlevel10k)。載入器支援 Apple Silicon 與 Intel 的 Homebrew 路徑，也接受 `HOMEBREW_PREFIX`；工具未安裝時跳過。新機直接使用 Homebrew 的 Powerlevel10k，無須 Oh My Zsh。既有 Oh My Zsh 留在 `.zshrc`，先載入後，workflow 會沿用已啟動的主題與工具，套用共用 prompt 樣式。
+
+受管理區塊應放在既有 shell/plugin 初始化之後。若手動搬動過區塊，先調整順序再套用。既有 fzf、zoxide 與 autosuggestions 初始化會由函式存在檢查跳過；可在確認新終端運作正常後刪除舊的對應載入段落。`~/.p10k.zsh` 不改寫，共用樣式以最後載入的 workflow 版本為準；調整 repo 的 `config/shell/p10k.zsh` 後重新 apply。還原會恢復原本的 `.zshrc`，並移除或還原新增設定。
+
+Herdr CLI 仍為選用工具，apply 只寫設定檔。新啟動的 Herdr server 會讀取設定；已在執行的 session 可在 Herdr pane 內手動執行 `herdr server reload-config`。此流程不會自動啟動或停止 session。
+
+選用的 [Auto Title](https://github.com/kryptamine/herdr-auto-title) 來源與參考版本記在 `config/tools.json`。依上游安裝 Go，再在 Herdr pane 內執行 `herdr plugin install kryptamine/herdr-auto-title`（取得當時上游版本，並非鎖定參考版本）。新安裝 plugin 需於 server 下次啟動才載入，請在工作結束後自行安排重啟；第一次啟動可能覆寫既有名稱。不搬移含本機絕對路徑的 `plugins.json`、編譯產物或 session 資料。
 
 Matt Pocock 的工程 skills 首次用在各專案前，執行 `setup-matt-pocock-skills` 設定該專案的 issue tracker 與文件位置；全域安裝不會代替專案做這個選擇。
 
