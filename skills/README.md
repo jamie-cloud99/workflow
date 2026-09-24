@@ -27,7 +27,7 @@
 | --- | --- |
 | 實作交付、交付前自查與交接 | [workflow-delivery](common/workflow-delivery/SKILL.md) |
 | 自己的變更自查、擔任 reviewer、處理 review 回饋 | [workflow-review](common/workflow-review/SKILL.md) |
-| 帶人逐一讀 PR／diff 學觀念，非 review | [workflow-learn-pr](common/workflow-learn-pr/SKILL.md) |
+| 帶人逐一讀 PR／diff 學觀念，讀得比一般 review 更徹底，過程中發現的真問題仍會發 finding | [workflow-learn-pr](common/workflow-learn-pr/SKILL.md) |
 | 建立 commit、整理提交範圍 | [workflow-commit](common/workflow-commit/SKILL.md) |
 | 建立／更新 GitHub PR、確認遠端 CI | [workflow-create-pr](common/workflow-create-pr/SKILL.md) |
 | 索引 repo、追查符號與相依影響 | [gitnexus](common/gitnexus/SKILL.md) |
