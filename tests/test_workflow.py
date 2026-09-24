@@ -119,7 +119,10 @@ source "$HOME/.config/workflow/interactive.zsh"
     def test_network_and_tool_installation_are_not_part_of_apply(self):
         result = self.command('install-tools')
         self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('brew update', result.stdout)
         self.assertIn('brew bundle', result.stdout)
+        self.assertLess(result.stdout.index('brew update'), result.stdout.index('brew bundle'))
+        self.assertIn('cask "gcloud-cli"', (ROOT / 'config/Brewfile').read_text())
         self.assertIn('preview', result.stdout.lower())
         self.assertFalse(self.target.exists())
 

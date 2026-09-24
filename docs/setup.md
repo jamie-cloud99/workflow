@@ -29,9 +29,9 @@ GitHub 的 `ssh -T` 成功也可能 exit 1，應看回應中的帳號。若 `git
 ./workflow install-tools --execute
 ```
 
-第一個命令只預覽；第二個依序執行 Brewfile、Volta 管理的 Node／pnpm／CLI 與 gh-stack 安裝。任何一步失敗即停止，先前已完成的套件保留。修正後可重跑；已有 gh-stack 版本不同時，先檢查再決定是否升級。
+第一個命令只預覽；第二個先執行 `brew update`，再依序執行 Brewfile、Volta 管理的 Node／pnpm／CLI 與 gh-stack 安裝。任何一步失敗即停止，先前已完成的套件保留。修正後可重跑；已有 gh-stack 版本不同時，先檢查再決定是否升級。
 
-CLI 版本仍由 `config/tools.json` 管理，專案 Node/pnpm 版本以各 repo 為準；Homebrew formula/cask 使用當時可取得版本。**第三方 skills 使用最新上游**，與 CLI 的版本策略分開。
+Homebrew 套件統一列在 `config/Brewfile`；目前也會安裝 Google Cloud CLI（`gcloud-cli` cask）。要加入其他 formula 或 cask，更新該檔後先用預覽命令確認。CLI 版本仍由 `config/tools.json` 管理，專案 Node/pnpm 版本以各 repo 為準；Homebrew formula/cask 使用當時可取得版本。**第三方 skills 使用最新上游**，與 CLI 的版本策略分開。
 
 Herdr、Docker、Playwriter Chrome extension 及 plugins 為選用，來源與理由見 `config/tools.json`。帳號／瀏覽器授權仍需新機操作。Warp 不安裝。
 

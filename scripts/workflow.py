@@ -100,7 +100,8 @@ def render(target, state, local_only=False):
 
 def tool_commands():
     tools = read_json(ROOT / 'config/tools.json')
-    commands = [['brew', 'bundle', '--file', str(ROOT / 'config/Brewfile')],
+    commands = [['brew', 'update'],
+                ['brew', 'bundle', '--file', str(ROOT / 'config/Brewfile')],
                 ['volta', 'install', 'node@' + tools['node']],
                 ['volta', 'install', 'pnpm@' + tools['pnpm']]]
     commands.extend(['volta', 'install', name + '@' + version] for name, version in tools['packages'].items())
@@ -174,7 +175,7 @@ def doctor(manager, files, missing, config_only=False, online=False):
         if isinstance(value, dict) and not Path(value['link']).exists():
             problems.append('broken skill target: ' + name)
     if not config_only:
-        for name in ['git', 'gh', 'volta', 'node', 'pnpm', 'codex', 'claude', 'gitnexus', 'playwriter', 'glow', 'duti']:
+        for name in ['git', 'gh', 'volta', 'node', 'pnpm', 'codex', 'claude', 'gitnexus', 'playwriter', 'glow', 'duti', 'gcloud']:
             resolved = shutil.which(name)
             print('CLI', name, resolved or 'MISSING')
             if not resolved:
