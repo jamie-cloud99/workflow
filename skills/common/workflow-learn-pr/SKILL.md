@@ -7,6 +7,7 @@ description: Use when walking someone through a PR or diff concept-by-concept to
 
 A concept-first mode of [workflow-review](../workflow-review/SKILL.md)'s "act as a reviewer" path: reading is deeper and paced for understanding, not just for finding defects, but a genuine problem spotted along the way is still a finding — raise it as one, with the same file/line evidence and authorization boundary as workflow-review (read-only unless posting is authorized).
 
+- Open with a short overview before touching any branch detail: what the PR does, why, and which concepts it will touch. This is the blueprint the concept-by-concept walkthrough hangs on — one paragraph, not a summary of every file.
 - Start where explanation density is highest: comments, docblocks, or PR description text that justify a non-obvious choice. That signal marks where a concept is worth extracting, not just the diff order.
 - Split each concept in two: the transferable principle first (states independently of this codebase), then how this specific code embodies it. The principle is what should survive to the next unrelated codebase.
 - For every design choice, trace the concrete failure: what breaks, who hits it, when, and what the symptom looks like — not a label like "uses fail-closed" left unexplained. This is also how a real defect surfaces here: tracing the concrete failure of a choice that turns out to have no good justification.
