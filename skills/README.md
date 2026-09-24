@@ -1,6 +1,6 @@
 # Skills
 
-`common/`、`frontend/`、`backend/` 存放 16 個自有 skills。`sources.json` 管理 26 個第三方 skills 的來源、路徑與分類。
+`common/`、`frontend/`、`backend/` 存放 17 個自有 skills。`sources.json` 管理 26 個第三方 skills 的來源、路徑與分類。
 
 流程型 skills 使用 `workflow-` 前綴，例如交付、review、prototype、瀏覽器驗收與資料庫變更；架構方法及契約規範直接使用主題名稱，例如 `ddd`、`bdd`、`frontend-contracts`、`backend-contracts`。第三方 skills 沿用上游名稱。
 
@@ -27,6 +27,7 @@
 | --- | --- |
 | 實作交付、交付前自查與交接 | [workflow-delivery](common/workflow-delivery/SKILL.md) |
 | 自己的變更自查、擔任 reviewer、處理 review 回饋 | [workflow-review](common/workflow-review/SKILL.md) |
+| 帶人逐一讀 PR／diff 學觀念，非 review | [workflow-learn-pr](common/workflow-learn-pr/SKILL.md) |
 | 建立 commit、整理提交範圍 | [workflow-commit](common/workflow-commit/SKILL.md) |
 | 建立／更新 GitHub PR、確認遠端 CI | [workflow-create-pr](common/workflow-create-pr/SKILL.md) |
 | 索引 repo、追查符號與相依影響 | [gitnexus](common/gitnexus/SKILL.md) |
