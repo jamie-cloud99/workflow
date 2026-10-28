@@ -1,6 +1,6 @@
 ---
 name: workflow-commit
-description: Create scoped commits when requested or required by an authorized delivery.
+description: Creates scoped Git commits with Conventional Commits messages in Traditional Chinese. Use when the user asks to commit or an authorized delivery requires one.
 ---
 
 # workflow-commit

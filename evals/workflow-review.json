@@ -1,0 +1,35 @@
+[
+  {
+    "skills": [
+      "workflow-review"
+    ],
+    "query": "使用者說「review 這個 PR」,PR 作者是使用者自己的帳號",
+    "expected_behavior": [
+      "依使用者要求選擇 reviewer 模式而非依作者帳號",
+      "唯讀,不修改程式碼",
+      "發現附嚴重度、觸發情境與檔案行號"
+    ]
+  },
+  {
+    "skills": [
+      "workflow-review"
+    ],
+    "query": "使用者貼上 3 則 PR review 留言要求處理,其中一則是錯誤的",
+    "expected_behavior": [
+      "逐則驗證再修改",
+      "對錯誤留言以證據說明不同意",
+      "未經授權不回覆也不 resolve thread"
+    ]
+  },
+  {
+    "skills": [
+      "workflow-review"
+    ],
+    "query": "review 的變更只有風格偏好差異與一個未驗證的風險",
+    "expected_behavior": [
+      "不把風格偏好當缺陷",
+      "區分已確認缺陷與未驗證風險",
+      "先報告發現再說明涵蓋範圍"
+    ]
+  }
+]

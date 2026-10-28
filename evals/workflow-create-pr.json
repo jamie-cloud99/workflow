@@ -1,0 +1,35 @@
+[
+  {
+    "skills": [
+      "workflow-create-pr"
+    ],
+    "query": "使用者說「開 PR」,分支已有多個 commit 且遠端有新 commit",
+    "expected_behavior": [
+      "確認 head、base、remote 與帳號",
+      "推送前檢查遠端分歧而非強制覆蓋",
+      "PR 內容涵蓋 base 到 head 的完整變更"
+    ]
+  },
+  {
+    "skills": [
+      "workflow-create-pr"
+    ],
+    "query": "PR 建立後 CI 有一個任務造成的測試失敗",
+    "expected_behavior": [
+      "針對該 head 的 CI 追到終態",
+      "在範圍內修正失敗並重新驗證",
+      "不在 CI 失敗時回報成功"
+    ]
+  },
+  {
+    "skills": [
+      "workflow-create-pr"
+    ],
+    "query": "使用者只說「幫我寫 PR 描述」",
+    "expected_behavior": [
+      "只輸出草稿文字",
+      "不 push 也不建立 PR",
+      "描述說明問題、行為、取捨與證據,使用繁體中文"
+    ]
+  }
+]

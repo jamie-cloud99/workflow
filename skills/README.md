@@ -84,3 +84,7 @@ i-have-adhd 僅收錄 `skills/i-have-adhd/` 與其上游 metadata，不安裝 pl
 `retired_skills` 指定不再啟用的名稱。apply 只移除本工具管理且未被修改的連結；手動安裝的目錄及未管理連結保留，衝突需先處理。相關操作見[換機說明](../docs/setup.md)。
 
 新增來源時填 repository、skill 路徑、名稱與分類，再 sync 驗證。第三方原始碼、授權文件與 Git 記錄保存在本機 checkout。
+
+## Evals
+
+`evals/<skill>.json` 為流程型 skills 的評測情境，欄位為 `skills`、`query`、`expected_behavior`。以 `claude -p "<query>"` 分別在載入與不載入該 skill 的情況下執行，逐項對照 `expected_behavior`；修改 skill 後重跑，確認有改善且其他情境未退步。

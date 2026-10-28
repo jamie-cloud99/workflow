@@ -1,6 +1,6 @@
 ---
 name: hexagonal-architecture
-description: Design or review ports and adapters when isolating application logic from external dependencies.
+description: Designs or reviews ports and adapters that isolate application logic from external dependencies. Use when hexagonal architecture is requested or already used, or a real dependency boundary needs isolation.
 ---
 
 # hexagonal-architecture

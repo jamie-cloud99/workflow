@@ -1,6 +1,6 @@
 ---
 name: workflow-delivery
-description: Use when requirements are clear and changes need implementation or delivery; do not start the full workflow for simple questions.
+description: Runs requirements through implementation, verification, commit, and PR. Use when requirements are clear and changes need delivery or handoff; not for simple questions.
 ---
 
 # workflow-delivery
