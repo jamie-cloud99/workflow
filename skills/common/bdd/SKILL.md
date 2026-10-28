@@ -1,6 +1,6 @@
 ---
 name: bdd
-description: Clarify acceptance behavior with concrete examples when BDD or example-based specification is needed.
+description: Clarifies acceptance behavior with concrete Given/When/Then examples. Use when business behavior is ambiguous or BDD and example-based specification are requested.
 ---
 
 # bdd

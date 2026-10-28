@@ -1,6 +1,6 @@
 ---
 name: workflow-review
-description: Use for author self-review, reviewing another person's changes, or addressing PR review feedback.
+description: Handles author self-review, reviewing another person's changes, and addressing PR review feedback. Use when the user asks to review code, a PR, or respond to review comments.
 ---
 
 # workflow-review

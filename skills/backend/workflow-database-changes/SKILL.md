@@ -1,6 +1,6 @@
 ---
 name: workflow-database-changes
-description: Use when creating migrations, backfilling data, synchronizing batches, or investigating database locks.
+description: Guides safe database migrations, backfills, batch synchronization, and lock investigation. Use when creating migrations, changing data in bulk, or diagnosing database locks.
 ---
 
 # workflow-database-changes

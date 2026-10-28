@@ -1,6 +1,6 @@
 ---
 name: workflow-learn-pr
-description: Use when walking someone through a PR or diff concept-by-concept to build understanding — a slower, teaching-first variant of reviewing that still surfaces real findings.
+description: Walks through a PR or diff one concept at a time to build understanding while still surfacing real findings. Use when the user wants to learn from or understand a PR rather than only review it.
 ---
 
 # workflow-learn-pr

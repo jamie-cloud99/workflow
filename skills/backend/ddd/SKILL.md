@@ -1,6 +1,6 @@
 ---
 name: ddd
-description: Design or review domain models, bounded contexts, and aggregate invariants when DDD is requested or already used.
+description: Designs or reviews domain models, bounded contexts, and aggregate invariants. Use when DDD is requested or already used, not for ordinary CRUD.
 ---
 
 # ddd

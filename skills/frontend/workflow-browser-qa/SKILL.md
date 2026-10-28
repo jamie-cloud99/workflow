@@ -1,6 +1,6 @@
 ---
 name: workflow-browser-qa
-description: Use after frontend implementation when browser verification of user flows and presentation is needed.
+description: Verifies user flows and presentation in a real browser. Use after frontend implementation to check loading, errors, accessibility, and responsive layout.
 ---
 
 # workflow-browser-qa

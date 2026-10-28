@@ -1,6 +1,6 @@
 ---
 name: workflow-task-breakdown
-description: Split an agreed specification into independently verifiable tasks and dependencies.
+description: Splits an agreed specification into independently verifiable tasks with dependencies. Use when a confirmed feature needs multiple implementation tasks or a plan.
 ---
 
 # workflow-task-breakdown

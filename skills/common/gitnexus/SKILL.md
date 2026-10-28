@@ -1,6 +1,6 @@
 ---
 name: gitnexus
-description: Use GitNexus to index a repository or inspect symbol relationships and change impact.
+description: Indexes a repository with GitNexus and inspects symbol relationships and change impact. Use when graph evidence helps, such as callers, dependency reach, or review impact.
 ---
 
 # gitnexus

@@ -1,6 +1,6 @@
 ---
 name: cqrs
-description: Design or review command/query model separation when CQRS is requested or already used.
+description: Designs or reviews command/query model separation. Use when CQRS is requested or already used, or when read and write responsibilities need distinct models.
 ---
 
 # cqrs

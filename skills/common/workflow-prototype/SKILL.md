@@ -1,6 +1,6 @@
 ---
 name: workflow-prototype
-description: Build a prototype or POC to resolve uncertain interaction, workflow, or state-model requirements.
+description: Builds a prototype or POC to resolve uncertain interaction, workflow, or state-model requirements. Use when the user asks for a prototype or behavior is best explored interactively.
 ---
 
 # workflow-prototype

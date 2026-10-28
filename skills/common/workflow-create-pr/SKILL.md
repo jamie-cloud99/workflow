@@ -1,6 +1,6 @@
 ---
 name: workflow-create-pr
-description: Create or update a GitHub PR and verify its remote head and CI.
+description: Creates or updates a GitHub PR, then verifies its remote head and CI. Use when the user asks to open, update, or ship a PR.
 ---
 
 # workflow-create-pr

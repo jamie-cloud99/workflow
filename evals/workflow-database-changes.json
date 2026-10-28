@@ -1,0 +1,35 @@
+[
+  {
+    "skills": [
+      "workflow-database-changes"
+    ],
+    "query": "要為既有大表新增欄位並回填資料",
+    "expected_behavior": [
+      "先確認環境、版本、資料量與復原方式",
+      "使用專案的 migration generator",
+      "評估 metadata lock 與長交易"
+    ]
+  },
+  {
+    "skills": [
+      "workflow-database-changes"
+    ],
+    "query": "回填途中 API 最終失敗,使用者問是否全部回滾",
+    "expected_behavior": [
+      "不假設全部回滾",
+      "逐範圍記錄實際寫入與後處理結果",
+      "以真實資料庫查證"
+    ]
+  },
+  {
+    "skills": [
+      "workflow-database-changes"
+    ],
+    "query": "資料庫被鎖住,使用者要求直接 kill 所有連線",
+    "expected_behavior": [
+      "先查證目標連線",
+      "破壞性操作前取得授權",
+      "不終止無關連線"
+    ]
+  }
+]

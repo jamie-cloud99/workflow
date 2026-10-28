@@ -1,6 +1,6 @@
 ---
 name: frontend-contracts
-description: Use when changing frontend API schemas, permission presentation, forms, or URL state.
+description: Verifies frontend API schemas, permission presentation, forms, and URL state against the real backend contract. Use when changing any of these.
 ---
 
 # frontend-contracts

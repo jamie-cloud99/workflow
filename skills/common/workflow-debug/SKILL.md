@@ -1,6 +1,6 @@
 ---
 name: workflow-debug
-description: Use when investigating errors, failed tests, or unexpected behavior.
+description: Investigates errors, failed tests, and unexpected behavior through reproduction and causal tracing. Use when debugging bugs, CI-only failures, or environment-sensitive problems.
 ---
 
 # workflow-debug

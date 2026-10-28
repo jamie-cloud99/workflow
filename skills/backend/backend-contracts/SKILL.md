@@ -1,6 +1,6 @@
 ---
 name: backend-contracts
-description: Use when changing APIs, authorization, state transitions, or transactional writes.
+description: Verifies backend API, authorization, state-transition, and transactional-write contracts. Use when changing endpoints, permissions, retries, or concurrent updates.
 ---
 
 # backend-contracts

@@ -1,0 +1,35 @@
+[
+  {
+    "skills": [
+      "workflow-commit"
+    ],
+    "query": "工作樹同時有任務修改與無關檔案,使用者說「把這次的修改 commit」",
+    "expected_behavior": [
+      "確認目前分支",
+      "只 stage 任務相關的檔案或 hunk",
+      "無關修改保持未提交且 staging 狀態不變"
+    ]
+  },
+  {
+    "skills": [
+      "workflow-commit"
+    ],
+    "query": "pre-commit hook 因任務造成的 lint 錯誤失敗",
+    "expected_behavior": [
+      "不使用 --no-verify",
+      "修正錯誤後重跑相關檢查",
+      "不為此再次詢問使用者核准"
+    ]
+  },
+  {
+    "skills": [
+      "workflow-commit"
+    ],
+    "query": "使用者只問「幫我想一個 commit message」",
+    "expected_behavior": [
+      "只提供訊息文字",
+      "不執行 git commit",
+      "訊息為 Conventional Commits 加繁體中文"
+    ]
+  }
+]
