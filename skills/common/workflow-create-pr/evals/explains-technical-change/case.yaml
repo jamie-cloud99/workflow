@@ -1,6 +1,6 @@
 schema_version: "1.1"
 name: explains-technical-change
 expected_outcome: |
-  A reviewer unfamiliar with the workflow understands the problem, change, and evidence on the first reading of the entire description, including verification. A plain opening cannot compensate for jargon-heavy or convoluted body paragraphs.
+  A reviewer unfamiliar with the workflow understands the problem, change, and evidence on the first reading of the entire description, including verification. The body must develop the problem, approach, and consequences; a plain opening cannot compensate for jargon-heavy prose or an inventory-led outline.
 context:
   scaffold_script: place-files.sh
