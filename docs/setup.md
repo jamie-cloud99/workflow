@@ -49,6 +49,8 @@ repo 的 `skills/sources.json` 只記來源、路徑與分類，不固定 commit
 
 plan 不下載、不寫設定、不建立目標目錄；顯示 create、update、remove、unchanged、conflict。缺 skills 或衝突時 exit 2。apply 先檢查全部目的地，遇到衝突不開始改寫設定。
 
+只想新增或更新 skills 連結、不動既有的設定、shell 與 git 檔案時，加上 `--skills-only`（例如 `./workflow apply --skills-only`）；其他檔案的衝突不會阻擋這項操作。
+
 要採用模板取代既有設定，先讀衝突檔案與 `config/`，再執行：
 
 ```sh
