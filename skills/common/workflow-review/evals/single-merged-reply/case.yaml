@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: single-merged-reply
+expected_outcome: |
+  One merged reply on #561 mapping every in-scope item to a commit, with no conflict details, passed via --body-file.
+context:
+  scaffold_script: place-files.sh

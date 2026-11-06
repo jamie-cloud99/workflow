@@ -13,6 +13,11 @@ Choose the mode from the user's request; do not infer it solely from the PR auth
 | Act as a reviewer | Inspect the exact head/base and report findings with severity, triggering scenario, impact, and file/line evidence. | Read-only unless fixes are requested. Publish a review or approval only when authorized. |
 | Address feedback | Read current feedback, verify each claim, then fix confirmed issues or explain disagreement with evidence. | Commit, push, reply, and resolve threads only within corresponding authorization. |
 
+- State the PR number, title, and author before reviewing, and review only the PR named. Treat a newly added TODO/FIXME/"verify" in the diff, docs included, as blocking.
+- For a thorough or independent review of a non-trivial diff, run read-only subagents in parallel, one concern each (architecture, deploy/ops safety, data robustness, test gaps), then re-read the cited code yourself and drop what you cannot verify. A small diff may be reviewed in one pass; say so.
+- Fetch formal reviews (`gh api repos/{owner}/{repo}/pulls/N/reviews`) as well as inline and issue comments; the Critical items often appear only there.
+- Write every review comment and reply in ELI20 style, as [workflow-create-pr](../workflow-create-pr/SKILL.md) does for PR bodies: the concrete problem, the triggering scenario, the impact, and the evidence, for an engineer unfamiliar with the change. Traditional Chinese by default.
+- Reply once per PR, mapping every item to its commit, without conflict-resolution details, and request re-review. Stop after 3 failed CI iterations and report.
 - Trace affected callers, authorization, state transitions, and failure paths as relevant. For stacks, inspect both the incremental diff and final combined behavior.
 - Distinguish confirmed defects, unverified risks, and policy choices. Discuss unresolved policy decisions one at a time; do not treat style preferences as defects.
 - Arrange independent review passes when requested; do not require separate agents for every review.

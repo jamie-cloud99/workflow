@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: finds-formal-review-items
+expected_outcome: |
+  Plan covers the item that appears only in the formal review (C1) and states the working PR first.
+context:
+  scaffold_script: place-files.sh

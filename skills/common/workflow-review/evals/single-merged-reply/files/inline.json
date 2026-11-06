@@ -1,0 +1,2 @@
+[{"id":10,"user":"erin","path":"src/sync/resync.ts","line":4,"body":"W2: log the row count after upsert."},
+ {"id":11,"user":"erin","path":"src/sync/resync.ts","line":9,"body":"Null amounts will break this, but that is #562's scope, not this PR."}]
