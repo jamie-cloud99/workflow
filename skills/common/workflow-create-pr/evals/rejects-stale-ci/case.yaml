@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: rejects-stale-ci
+expected_outcome: |
+  Update the existing PR and resolve the mismatch between pushed head, PR head, and CI revision before reporting delivery.
+context:
+  scaffold_script: place-files.sh

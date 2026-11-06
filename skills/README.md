@@ -88,3 +88,5 @@ i-have-adhd 僅收錄 `skills/i-have-adhd/` 與其上游 metadata，不安裝 pl
 ## Evals
 
 評測案例放在各 skill 目錄的 `evals/<case-name>/`（與 `claude plugin eval` 相同的格式）：`prompt.md` 為使用者原話，`case.yaml` 描述預期結果，`graders/NN-xxx.md` 每檔一項可驗證的陳述，輸入檔放 `files/`。案例應取自實際觀察到的失誤，並分別在載入與不載入該 skill 的情況下執行；不論有無 skill 都通過的 grader 沒有鑑別力，應刪除。可用 `workflow-eval` 彙整結果並開啟 review 頁。
+
+Ship PR 的離線案例分放在 `workflow-delivery/evals/ship-authorized-scope` 與 `workflow-create-pr/evals/` 下的 `rejects-stale-ci`、`wording-only-boundary`。這些是依交付規則設計的合成情境，涵蓋持續授權、無關修改、既有 PR、過期 CI 與僅撰文的界線。skill 組須提供 delivery、commit、create-pr 交付鏈供自動選用；基準組不提供這三個 skill，其餘模型、工具、提示與輸入相同。案例只產生計畫或草稿，不操作真實遠端；通過不能證明實際 push 或 CI 輪詢已成功，也尚未證明 grader 有鑑別力。
