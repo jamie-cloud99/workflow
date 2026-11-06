@@ -214,6 +214,7 @@ def main():
     parser.add_argument('--target', type=Path, default=Path.home())
     parser.add_argument('--state-dir', type=Path)
     parser.add_argument('--local-only', action='store_true', help='Only local skills, no external skill requirements.')
+    parser.add_argument('--skills-only', action='store_true', help='Only link skills; leave config, shell and git files untouched.')
     parser.add_argument('--replace', action='store_true', help='Back up and replace conflicting files/leaf links; never directories.')
     parser.add_argument('--execute', action='store_true', help='Execute tool installs or Claude MCP registration.')
     parser.add_argument('--config-only', action='store_true')
@@ -238,6 +239,8 @@ def main():
     files, missing = render(target, manager.state, args.local_only)
     if args.command == 'doctor':
         return doctor(manager, files, missing, args.config_only, args.online)
+    if args.skills_only:
+        files = {k: v for k, v in files.items() if k.startswith(('.agents/skills/', '.claude/skills/'))}
     if args.command == 'apply':
         if missing:
             raise RuntimeError('Missing skills; run sync-skills first: ' + ', '.join(missing))

@@ -1,0 +1,1 @@
+[{"id":1,"user":"erin","state":"CHANGES_REQUESTED","body":"C1 (Critical): bulkUpsert races when two resyncs overlap, duplicate rows possible.\nW1 (Warning): resync() has no timeout.\nI1 (Info): rename fetchAll to fetchAllCounterparties."}]

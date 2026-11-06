@@ -1,0 +1,23 @@
+PR #42 "Add ledger year summary" by alice  base: main  head: feat/ledger-year
+diff --git a/DEPLOYMENT.md b/DEPLOYMENT.md
++## Rollback
++TODO: verify the 0042 migration can be rolled back without data loss
+diff --git a/src/posting/sources/orderAdapter.ts b/src/posting/sources/orderAdapter.ts
++export function adaptOrder(order: Order): Posting {
++  // customers above 10000 are treated as VIP and get a discount account
++  const account = order.total > 10000 ? 'vip-discount' : 'standard-sales';
++  return { account, amount: order.total };
++}
+diff --git a/src/repo/ledgerRepo.ts b/src/repo/ledgerRepo.ts
++export async function summarize(years: number[]) {
++  const out = [];
++  for (const y of years) {
++    const rows = await db.query(`SELECT SUM(amount) AS total FROM ledger WHERE year = ${y}`);
++    out.push(rows[0]);
++  }
++  return out;
++}
+diff --git a/src/controllers/ledgerController.ts b/src/controllers/ledgerController.ts
++router.get('/ledger/summary', async (req, res) => res.json(await summarize(parseYears(req.query.years))));
+diff --git a/src/repo/ledgerRepo.test.ts b/src/repo/ledgerRepo.test.ts
++it('summarizes one year', async () => { expect((await summarize([2026])).length).toBe(1); });

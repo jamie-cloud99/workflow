@@ -87,4 +87,4 @@ i-have-adhd 僅收錄 `skills/i-have-adhd/` 與其上游 metadata，不安裝 pl
 
 ## Evals
 
-`evals/<skill>.json` 為流程型 skills 的評測情境，欄位為 `skills`、`query`、`expected_behavior`。以 `claude -p "<query>"` 分別在載入與不載入該 skill 的情況下執行，逐項對照 `expected_behavior`；修改 skill 後重跑，確認有改善且其他情境未退步。
+評測案例放在各 skill 目錄的 `evals/<case-name>/`（與 `claude plugin eval` 相同的格式）：`prompt.md` 為使用者原話，`case.yaml` 描述預期結果，`graders/NN-xxx.md` 每檔一項可驗證的陳述，輸入檔放 `files/`。案例應取自實際觀察到的失誤，並分別在載入與不載入該 skill 的情況下執行；不論有無 skill 都通過的 grader 沒有鑑別力，應刪除。可用 `workflow-eval` 彙整結果並開啟 review 頁。
