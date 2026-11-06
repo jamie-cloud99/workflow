@@ -1,6 +1,0 @@
-schema_version: "1.1"
-name: large-complex-pr
-expected_outcome: |
-  A verified, structured review of a 3.5k-line security-sensitive daemon PR: findings cite real locations, none are fabricated, confirmed defects are separated from unverified risks, and nothing is published.
-context:
-  scaffold_script: place-files.sh
