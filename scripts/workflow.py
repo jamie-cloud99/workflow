@@ -107,6 +107,11 @@ def tool_commands():
     commands.extend(['volta', 'install', name + '@' + version] for name, version in tools['packages'].items())
     commands.extend(['gh', 'extension', 'install', item['repository'], '--pin', item['revision']]
                     for item in tools['extensions'])
+    # Only plugins marked automatic are installed; the rest stay opt-in.
+    for item in tools['plugins']:
+        if item['runtime'] == 'claude' and item['automatic']:
+            commands.append(['claude', 'plugin', 'marketplace', 'add', item['marketplace']])
+            commands.append(['claude', 'plugin', 'install', item['name']])
     return commands
 
 
@@ -128,6 +133,11 @@ def install_tools(execute, target):
                     if command[-1] not in matches[0].split():
                         raise RuntimeError('Existing gh-stack version differs; inspect gh extension list before upgrading.')
                     print('Already installed at requested version.')
+                    continue
+            if command[:3] == ['claude', 'plugin', 'install']:
+                found = subprocess.run(['claude', 'plugin', 'list'], env=env, capture_output=True, text=True, check=True)
+                if command[3] in found.stdout:
+                    print('Already installed.')
                     continue
             subprocess.run(command, env=env, check=True)
     print('Manual tools/plugins and login steps: config/tools.json and docs/setup.md')

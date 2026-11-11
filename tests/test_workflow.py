@@ -123,6 +123,8 @@ source "$HOME/.config/workflow/interactive.zsh"
         self.assertIn('brew bundle', result.stdout)
         self.assertLess(result.stdout.index('brew update'), result.stdout.index('brew bundle'))
         self.assertIn('cask "gcloud-cli"', (ROOT / 'config/Brewfile').read_text())
+        self.assertIn('claude plugin install pstack@pstack-claude', result.stdout)
+        self.assertNotIn('greptile', result.stdout)
         self.assertIn('preview', result.stdout.lower())
         self.assertFalse(self.target.exists())
 
