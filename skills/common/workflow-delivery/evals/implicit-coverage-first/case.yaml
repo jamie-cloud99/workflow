@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: implicit-coverage-first
+expected_outcome: |
+  Without naming any skill, map the requested behavior to existing tests and their assertions before coding, and plan evidence that cannot pass on a vacuous or mock-only result.
+context:
+  scaffold_script: place-files.sh

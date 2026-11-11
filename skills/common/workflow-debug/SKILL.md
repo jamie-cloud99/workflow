@@ -8,7 +8,8 @@ description: Investigates errors, failed tests, and unexpected behavior through 
 1. Record inputs, actual and expected results, and a minimal reproduction. Verify the premises of the user report first.
 2. Trace the data or call chain to the first deviation from expected behavior. Label database, API, and browser evidence with its source environment.
 3. Test one causal hypothesis at a time. Rule out configuration or version differences before changing code.
-4. After the fix, rerun the original reproduction and adjacent critical paths. Report successful primary writes separately from failed post-processing.
+4. Capture the failing step and its evidence (output, trace, screenshot) so the cause is diagnosed, not guessed. For a regression, keep the minimized failing case as a test when it is cheap to run.
+5. After the fix, rerun the original reproduction and adjacent critical paths. Report successful primary writes separately from failed post-processing.
 
 ## Environment-sensitive failures
 
