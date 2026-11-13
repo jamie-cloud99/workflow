@@ -31,6 +31,10 @@
 - **第三方 skills 一律用最新上游**，與 CLI 版本策略分開。
 - 選用：Herdr、Docker、Playwriter extension、plugins（見 `config/tools.json`）。帳號與瀏覽器授權需在新機操作。Warp 不安裝。
 
+### 新專案的驗證工具
+
+launch／drive／observe（啟動、操作、讀回結果）的工具因專案而異，放在各專案 repo，不放在本 repo。需要用真實操作證明 UI、CLI 或服務行為時，先用專案已有的 verification／run skill；沒有就在新專案執行一次 pstack 的 `create-verification-skill`（`install-tools --execute` 會自動安裝 pstack；`config/tools.json` 中 `automatic: true` 的 Claude plugin 才會安裝，其餘維持手動），並把產生的 skill 提交到該專案。
+
 ## 3. 取得 skills 並套用
 
 ```sh

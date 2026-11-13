@@ -17,7 +17,7 @@
 
 Choose requirements, architecture, engineering, QA, or user perspectives according to the problem; do not split every task into multiple agents. Arrange independent work when the user requests independent reviews by role.
 
-Choose one primary workflow skill per phase. Carry forward confirmed designs and authorization instead of restarting interviews when switching skills. Use TDD when explicitly requested or justified by regression risk; do not add tests that merely mirror documentation or low-risk reversible configuration.
+When requirements are confirmed and the work is to implement and deliver it, use workflow-delivery even if the user does not name it. Choose one primary workflow skill per phase. Carry forward confirmed designs and authorization instead of restarting interviews when switching skills. Use TDD when explicitly requested or justified by regression risk; do not add tests that merely mirror documentation or low-risk reversible configuration.
 
 Use GitNexus, browser MCPs, and other tools when they add evidence. Resolve commands through PATH or local configuration; do not hardcode another machine's home directory, cache paths, or model availability.
 

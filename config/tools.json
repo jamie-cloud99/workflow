@@ -19,6 +19,7 @@
     {"runtime": "claude", "name": "code-simplifier@claude-plugins-official", "automatic": false},
     {"runtime": "claude", "name": "skill-creator@claude-plugins-official", "automatic": false},
     {"runtime": "claude", "name": "greptile@claude-plugins-official", "automatic": false},
+    {"runtime": "claude", "name": "pstack@pstack-claude", "marketplace": "michael-denyer/pstack-claude", "source": "https://github.com/michael-denyer/pstack-claude", "automatic": true},
     {"runtime": "codex", "name": "lazyweb@lazyweb", "source": "https://github.com/aboul3ata/lazyweb-skill.git", "automatic": false}
   ]
 }
