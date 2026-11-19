@@ -29,7 +29,7 @@
 - 順序：`brew update` → Brewfile → Volta（Node／pnpm／CLI）→ gh-stack。失敗即停，已完成的保留，修正後可重跑。
 - Homebrew 套件在 `config/Brewfile`，CLI 版本在 `config/tools.json`，專案的 Node／pnpm 以各 repo 為準。
 - **第三方 skills 一律用最新上游**，與 CLI 版本策略分開。
-- 選用：ego-lite（瀏覽器自動化；下載與 onboarding 步驟見 `config/tools.json`，`doctor` 只回報 `ego-browser` 是否存在）、Herdr、Docker、Playwriter extension、plugins（見 `config/tools.json`）。帳號與瀏覽器授權需在新機操作。Warp 不安裝。
+- 選用：ego-lite（瀏覽器自動化；下載與 onboarding 步驟見 `config/tools.json`，`doctor` 只回報 `ego-browser` 是否存在）、Herdr、Docker、ffmpeg、Playwriter extension、plugins（見 `config/tools.json`）。帳號與瀏覽器授權需在新機操作。Warp 不安裝。
 
 ### 新專案的驗證工具
 
