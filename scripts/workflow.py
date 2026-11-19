@@ -190,6 +190,8 @@ def doctor(manager, files, missing, config_only=False, online=False):
             print('CLI', name, resolved or 'MISSING')
             if not resolved:
                 problems.append('missing CLI: ' + name)
+        # Optional manual tool: report only, never an issue.
+        print('CLI ego-browser', shutil.which('ego-browser') or 'NOT INSTALLED (optional)')
         for name, command in [('github', ['gh', 'auth', 'status']), ('codex', ['codex', 'login', 'status']),
                               ('claude', ['claude', 'auth', 'status'])]:
             if online and shutil.which(command[0]):
