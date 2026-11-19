@@ -14,7 +14,7 @@
 
 ```text
 workflow/
-  README.md              # 從這裡開始：怎麼使用、目前完成哪些項目
+  README.md              # 從這裡開始：怎麼使用
   agents/                # AI 應遵守的規則
     common.md            # 個人共通規則、角色分工
     frontend.md          # 前端專案規則模板
@@ -38,6 +38,9 @@ workflow/
     design.md            # 本文件
     workflow.md          # 需求 → 實作 → review → PR／CI
     setup.md             # 換機、登入、更新與還原步驟
+    verification.md      # 驗證方式與範圍
+    memory.md            # 選用的本機記憶工具
+    markdown-preview.md  # Markdown 預覽
 ```
 
 `tests/` 與 `.github/` 是這個 repo 自身的測試與 CI，實際存在，但不是要安裝到新電腦的設定分類。
@@ -91,16 +94,13 @@ token、OAuth、SSH/GPG 私鑰、歷史 session、快取、專案信任紀錄及
 
 ## 換機操作
 
-具體命令與登入步驟見 setup.md。
+步驟、命令與選項見 [setup.md](setup.md)。設計上的保證：
 
-1. 使用 SSH clone repo，確認 macOS、CPU 架構及必要的初始安裝條件。這台電腦使用既有 `github-jamiecloud` host alias 選擇個人帳號金鑰；新機需先設定 SSH 身分。
-2. 執行 `install-tools` 預覽工具安裝，再以 `install-tools --execute` 安裝；執行 `sync-skills` 取得第三方 skills。
-3. 執行 `plan` 預覽設定與連結變更、缺少項目及衝突，不改動系統；再以 `apply` 套用設定、建立 skills 連結並記錄結果。`apply` 不安裝工具或下載 skills。
-4. 既有檔案有不同內容時，預設保留並回報衝突；明確選擇替換時先備份。備份及操作紀錄放在 repo 外的本機狀態目錄。
-5. 登入 GitHub、Codex、Claude 及選用的 MCP；瀏覽器擴充等手動工作提供明確步驟。
-6. 執行 `doctor`：檢查工具版本、設定解析、連結目標與 cache 摘要；`--online` 另外檢查登入狀態，不測 MCP 連通。區分「設定可讀」「CLI 可用」「登入完成」「服務連通」，不以其中一項代表全部完成。
-
-再次執行 apply 不重複寫入 shell 設定或新增同名連結。網路或套件安裝失敗時保留已完成結果並回報未完成項目，不能宣告全數成功。`restore` 只還原本工具管理的檔案及連結，並在使用者後續修改時回報衝突；不卸載共用套件或刪除資料庫。
+- `install-tools` 先預覽再 `--execute`；`apply` 不安裝工具或下載 skills；`plan` 不改動系統。
+- 既有檔案內容不同時預設保留並回報衝突；明確替換時先備份，備份與操作紀錄放在 repo 外的本機狀態目錄。
+- 再次執行 apply 不重複寫入 shell 設定或新增同名連結。網路或安裝失敗時保留已完成結果並回報未完成項目，不宣告全數成功。
+- `restore` 只還原本工具管理的檔案及連結，使用者後續修改時回報衝突；不卸載共用套件或刪除資料庫。
+- `doctor` 區分「設定可讀」「CLI 可用」「登入完成」「服務連通」，不以其中一項代表全部完成。
 
 ## 驗收範圍
 
@@ -122,5 +122,3 @@ token、OAuth、SSH/GPG 私鑰、歷史 session、快取、專案信任紀錄及
 
 - [Codex Config basics](https://learn.chatgpt.com/docs/config-file/config-basic)：使用者與專案設定層次，以及專案信任的關係。
 - [Codex Build skills](https://learn.chatgpt.com/docs/build-skills)：使用者 skills 位置、symlink 支援，以及同名 skills 不自動合併。
-
-工具版本與選用項目記在 `config/tools.json`；第三方 skills 以 `skills/sources.json` 管來源，每次同步上游最新版本。Homebrew 與人工登入的限制見 setup.md。

@@ -29,8 +29,6 @@ commit／PR 格式優先採用使用者本次要求，再採用 repo 規範；�
 
 截圖、unit test、真實 DB 測試、CI 與使用者驗收分別回答不同問題，不互相替代。
 
-Matt Pocock 工程 skills 第一次用在某專案前，先執行 `setup-matt-pocock-skills` 確認該專案的 issue tracker 與文件位置。`to-spec` 整理已討論的內容，不代替需求訪談；只有已授權發佈時才寫到外部 tracker。需要精簡回覆時使用 `caveman`，它不改變工作範圍或繁體中文偏好。
-
 交付前先依風險自查完整任務 diff：驗收結果、修改範圍、受影響呼叫端、失敗路徑及驗證是否支持成果。文件修改檢查內容與連結即可；不強制每次安排獨立 agent。
 
 收到 review 回饋後，先核對目前 head、意見與實際程式，再修正已確認的問題；政策未定時一次確認一項。有授權才提交、更新 PR、回覆或 resolve thread，並分開確認修正、遠端 CI 與討論狀態。
@@ -43,12 +41,6 @@ Review 依任務角色分流：自己的變更可在已授權範圍內自查、�
 
 Skills 保持精簡：description 只說明明確用途，本文保留影響判斷的慣例、邊界與完成條件；模板需要時才讀。依任務選擇相關文件與驗證，必要檢查通過後，只有新變更、失敗或未解疑慮才擴大或重跑。已授權工作持續做到完成，不因切換 skill 重複要求確認。
 
-DDD、CQRS、Hexagonal Architecture 與 BDD 是[按需選用的 skills](../skills/README.md#按需選用)，不屬於必跑階段。釐清行為時可用 BDD 補充具體例子；設計或維護相關架構時才載入對應 skill。一般任務維持既有架構，選用一項不代表連帶採用其他模式。
-
-需要明確檔案覆蓋清單或依檔案匹配審查規則時，可搭配 `open-code-review-delegate` 與選用的 `ocr` CLI。它由目前 agent 執行判斷，並非獨立第二位 reviewer；沿用實際 base／head、列出排除或略過檔案，結果仍須核實。未安裝 CLI 時可直接沿用原 review 工具。
-
-技術說明需要互動架構圖、資料流、時序或狀態圖時，可選用 `archify`；簡單圖使用 Mermaid，完整簡報使用 open-slide。先核對真實節點與關係，再驗證輸出；schema、版面與連線檢查不能替代原始碼證據或視覺驗收。
-
-回覆風格一次只啟用一種：caveman 偏重壓縮文字，i-have-adhd 偏重逐步行動與狀態提示。切換至 i-have-adhd 前先 `/caveman off`；切換至 caveman 前先 `stop adhd mode` 或 `normal mode`。兩者都維持使用者指定語言與既有授權。
-
 大型需求在 spec 確認後，可用 workflow-task-breakdown 拆成可獨立驗收的任務；小修改直接交付。GitNexus 由精簡的 gitnexus skill 提供操作與圖譜證據，仍需對照原始碼。Review 涉及測試時，同時檢查斷言、mock、刪除／跳過測試與預期值是否能證明需求，不以綠燈代替正確性。
+
+選用 skills（Matt Pocock 工程 skills、DDD／CQRS／Hexagonal／BDD、open-code-review-delegate、archify、caveman／i-have-adhd）的用法與限制見 [skills/README.md](../skills/README.md)。

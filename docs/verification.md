@@ -37,4 +37,14 @@ CI 不執行完整 Homebrew 安裝、帳號登入、MCP OAuth 或模型請求。
 
 ## Markdown 預覽
 
-安裝器測試檢查 script 執行權限、原預設程式備份及關聯更新的確認。macOS 真機需另外開啟 Markdown 文件，確認預設 app、文件參數與畫面內容；只有 open 成功或程序存在不足以證明畫面已正確呈現。
+安裝器測試檢查 script 執行權限、原預設程式備份及關聯更新的確認。可在暫存目錄驗證編譯，不變更預設關聯：
+
+```sh
+python3 scripts/macos/install-markdown-preview.py \
+  --app-dir /tmp/workflow-preview-check/Applications \
+  --state-dir /tmp/workflow-preview-check/state
+```
+
+macOS 會註冊 app；完成後先用系統 `lsregister -u` 取消該測試 app 的註冊，再刪除自己建立的暫存目錄，避免留下同 bundle ID 的測試副本。
+
+macOS 真機需另外開啟 Markdown 文件，確認預設 app、文件參數與畫面內容；只有 open 成功或程序存在不足以證明畫面已正確呈現。

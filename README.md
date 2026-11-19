@@ -34,7 +34,7 @@ cd workflow
 ## 工作方式
 
 - [日常工作流](docs/workflow.md)：需求、除錯、review、交付。
-- [Skills 清單](skills/README.md)：16 個自有 skills、26 個跟隨上游的第三方 skills。
+- [Skills 清單](skills/README.md)：自有與跟隨上游的第三方 skills。
 - [選用記憶工具](docs/memory.md)：Basic Memory 本機設定與換機備份。
 - [Markdown 預覽](docs/markdown-preview.md)：Ghostty + Glow。
 - [設計與邊界](docs/design.md)、[驗證方式](docs/verification.md)。
@@ -43,12 +43,6 @@ cd workflow
 
 ## 維護
 
-```sh
-python3 -m unittest discover -s tests -v
-bash -n scripts/macos/preview-markdown.sh
-zsh -n config/shell/env.zsh
-zsh -n config/shell/interactive.zsh
-zsh -n config/shell/p10k.zsh
-```
+測試與檢查命令見[驗證方式](docs/verification.md)。
 
 本 repo 不含私鑰、token、OAuth、歷史對話或專案資料。skills 連結依賴此 repo 與下載 cache 的位置；搬動 repo 前先 restore，再從新位置 apply。
