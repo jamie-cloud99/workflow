@@ -20,6 +20,7 @@
 | [alibaba/open-code-review](https://github.com/alibaba/open-code-review) | open-code-review-delegate |
 | [tt-a1i/archify](https://github.com/tt-a1i/archify) | archify |
 | [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) | i-have-adhd |
+| [remotion-dev/skills](https://github.com/remotion-dev/skills) | remotion-best-practices、remotion-captions、remotion-create、remotion-docs、remotion-interactivity、remotion-license、remotion-maps、remotion-markup、remotion-multimedia、remotion-render、remotion-saas、remotion-studio、remotion-upgrade |
 
 ## 主要入口
 
@@ -41,6 +42,7 @@
 | 專案 tracker 與文件位置設定 | setup-matt-pocock-skills |
 | 製作 open-slide 簡報與主題、處理頁面註解 | create-slide、slide-authoring、current-slide、apply-comments、create-theme |
 | 互動架構、流程、時序、資料流與狀態圖 | archify |
+| 用 Remotion 以程式製作影片、字幕、預覽與渲染 | remotion-best-practices（路由到其他 remotion-* skills） |
 | 手動切換逐步行動、易掃讀的回覆模式 | i-have-adhd |
 | 精簡回覆 | caveman |
 
@@ -57,6 +59,8 @@ open-code-review-delegate 是選用 review 輔助：由 `ocr` 提供檔案範圍
 archify 是選用的技術圖解工具，來源目錄 `archify/` 包含 renderer、schema 與驗證程式，需 Node.js 18 以上。複雜、互動或需匯出的圖解可使用它；簡單 Markdown 圖用 Mermaid，完整簡報用 open-slide。圖解驗證不代表架構符合真實程式，仍需核對來源證據。同步保留上游完整內容；更新由本 repo 的 sync-skills 管理，如不需要上游額外更新提示，可在執行時設定 `ARCHIFY_UPDATE_CHECK_DISABLED=1`。
 
 i-have-adhd 僅收錄 `skills/i-have-adhd/` 與其上游 metadata，不安裝 plugin 或 always-on hooks。手動呼叫 `/i-have-adhd` 啟用，以 `stop adhd mode` 或 `normal mode` 關閉；保留繁體中文偏好與既有工作授權，**避免與 caveman 同時啟用**；切換至 caveman 前先以 `stop adhd mode` 或 `normal mode` 關閉。兩者都會改寫回覆風格，同時啟用可能造成輸出規則互相干擾。
+
+remotion-* skills 使用上游 `remotion-dev/skills`，由 remotion-best-practices 路由；需在 Remotion 專案內使用，同步 skills 不會安裝 Remotion 套件。新專案可依[上游說明](https://www.remotion.dev/docs/ai/skills)建立。
 
 ## 按需選用
 
