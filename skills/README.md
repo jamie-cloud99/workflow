@@ -60,7 +60,7 @@ archify 是選用的技術圖解工具，來源目錄 `archify/` 包含 renderer
 
 i-have-adhd 僅收錄 `skills/i-have-adhd/` 與其上游 metadata，不安裝 plugin 或 always-on hooks。手動呼叫 `/i-have-adhd` 啟用，以 `stop adhd mode` 或 `normal mode` 關閉；保留繁體中文偏好與既有工作授權，**避免與 caveman 同時啟用**；切換至 caveman 前先以 `stop adhd mode` 或 `normal mode` 關閉。兩者都會改寫回覆風格，同時啟用可能造成輸出規則互相干擾。
 
-remotion-* skills 使用上游 `remotion-dev/skills`，由 remotion-best-practices 路由；需在 Remotion 專案內使用，同步 skills 不會安裝 Remotion 套件。新專案可依[上游說明](https://www.remotion.dev/docs/ai/skills)建立。
+remotion-* skills 使用上游 `remotion-dev/skills`，由 remotion-best-practices 路由；需在 Remotion 專案內使用，同步 skills 不會安裝 Remotion 套件；影音處理用的 ffmpeg 由 `config/Brewfile` 安裝。新專案可依[上游說明](https://www.remotion.dev/docs/ai/skills)建立。
 
 ## 按需選用
 
