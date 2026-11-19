@@ -190,6 +190,76 @@
           "group": "common"
         }
       ]
+    },
+    {
+      "repository": "remotion-dev/skills",
+      "skills": [
+        {
+          "name": "remotion-best-practices",
+          "path": "skills/remotion-best-practices",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-captions",
+          "path": "skills/remotion-captions",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-create",
+          "path": "skills/remotion-create",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-docs",
+          "path": "skills/remotion-docs",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-interactivity",
+          "path": "skills/remotion-interactivity",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-license",
+          "path": "skills/remotion-license",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-maps",
+          "path": "skills/remotion-maps",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-markup",
+          "path": "skills/remotion-markup",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-multimedia",
+          "path": "skills/remotion-multimedia",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-render",
+          "path": "skills/remotion-render",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-saas",
+          "path": "skills/remotion-saas",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-studio",
+          "path": "skills/remotion-studio",
+          "group": "frontend"
+        },
+        {
+          "name": "remotion-upgrade",
+          "path": "skills/remotion-upgrade",
+          "group": "frontend"
+        }
+      ]
     }
   ],
   "update_policy": "latest",
