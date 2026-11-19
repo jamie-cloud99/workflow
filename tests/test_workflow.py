@@ -30,7 +30,7 @@ class WorkflowTest(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
         import tomllib
         config = tomllib.loads((self.target / '.codex/config.toml').read_text())
-        self.assertEqual(config['mcp_servers']['gitnexus']['command'], str(self.target / '.volta/bin/gitnexus'))
+        self.assertEqual(config['mcp_servers']['playwright']['command'], str(self.target / '.volta/bin/npx'))
         self.assertTrue((self.target / '.agents/skills/workflow-delivery/SKILL.md').exists())
         self.assertTrue((self.target / '.claude/skills/workflow-delivery/SKILL.md').exists())
         self.assertEqual((self.target / '.zshrc').read_text().count('# workflow:start'), 1)

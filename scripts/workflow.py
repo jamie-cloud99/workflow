@@ -49,9 +49,7 @@ def render(target, state, local_only=False):
     codex = (ROOT / 'config/codex/config.toml').read_text()
     for name, value in mcp.items():
         value = dict(value)
-        if value.get('command') == 'gitnexus':
-            value['command'] = str(target / '.volta/bin/gitnexus')
-        elif value.get('command') == 'npx':
+        if value.get('command') == 'npx':
             value['command'] = str(target / '.volta/bin/npx')
         codex += '\n[mcp_servers.' + json.dumps(name) + ']\n'
         for key, item in value.items():
@@ -152,7 +150,7 @@ def configure_mcp(execute, target):
     for name, config in servers.items():
         config = dict(config)
         config['type'] = 'http' if 'url' in config else 'stdio'
-        if config.get('command') in ('gitnexus', 'npx'):
+        if config.get('command') == 'npx':
             config['command'] = str(target / '.volta/bin' / config['command'])
         if name in existing:
             comparable = dict(existing[name])
@@ -185,7 +183,7 @@ def doctor(manager, files, missing, config_only=False, online=False):
         if isinstance(value, dict) and not Path(value['link']).exists():
             problems.append('broken skill target: ' + name)
     if not config_only:
-        for name in ['git', 'gh', 'volta', 'node', 'pnpm', 'codex', 'claude', 'gitnexus', 'playwriter', 'glow', 'duti', 'gcloud']:
+        for name in ['git', 'gh', 'volta', 'node', 'pnpm', 'codex', 'claude', 'playwriter', 'glow', 'duti', 'gcloud']:
             resolved = shutil.which(name)
             print('CLI', name, resolved or 'MISSING')
             if not resolved:
@@ -204,7 +202,7 @@ def doctor(manager, files, missing, config_only=False, online=False):
         tools = read_json(ROOT / 'config/tools.json')
         versions = {'node': tools['node'], 'pnpm': tools['pnpm'],
                     'codex': tools['packages']['@openai/codex'],
-                    'gitnexus': tools['packages']['gitnexus'], 'playwriter': tools['packages']['playwriter']}
+                    'playwriter': tools['packages']['playwriter']}
         for name, expected in versions.items():
             if shutil.which(name):
                 result = subprocess.run([name, '--version'], capture_output=True, text=True, timeout=30)

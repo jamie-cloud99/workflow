@@ -41,6 +41,6 @@ Review 依任務角色分流：自己的變更可在已授權範圍內自查、�
 
 Skills 保持精簡：description 只說明明確用途，本文保留影響判斷的慣例、邊界與完成條件；模板需要時才讀。依任務選擇相關文件與驗證，必要檢查通過後，只有新變更、失敗或未解疑慮才擴大或重跑。已授權工作持續做到完成，不因切換 skill 重複要求確認。
 
-大型需求在 spec 確認後，可用 workflow-task-breakdown 拆成可獨立驗收的任務；小修改直接交付。GitNexus 由精簡的 gitnexus skill 提供操作與圖譜證據，仍需對照原始碼。Review 涉及測試時，同時檢查斷言、mock、刪除／跳過測試與預期值是否能證明需求，不以綠燈代替正確性。
+大型需求在 spec 確認後，可用 workflow-task-breakdown 拆成可獨立驗收的任務；小修改直接交付。Review 涉及測試時，同時檢查斷言、mock、刪除／跳過測試與預期值是否能證明需求，不以綠燈代替正確性。
 
 選用 skills（Matt Pocock 工程 skills、DDD／CQRS／Hexagonal／BDD、open-code-review-delegate、archify、caveman／i-have-adhd）的用法與限制見 [skills/README.md](../skills/README.md)。
